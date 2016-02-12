@@ -101,6 +101,7 @@ public class Robot extends IterativeRobot {
 	    			else
 	    			{
 	    				drive.arcadeDrive(0, 0);
+// change to while loop and reset encoders 
 	    			}
 	    		}
 	    		
