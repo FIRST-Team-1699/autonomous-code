@@ -1,4 +1,3 @@
-
 package org.usfirst.frc.team1699.robot;
 
 import java.util.ArrayList;
@@ -92,17 +91,16 @@ public class Robot extends IterativeRobot {
     			case "drive":
 	    		{
 	    			double length = (double) value;
-	    			double traveled = (double) ((frontLeftE.getDistance() + frontRightE.getDistance()) / 2);
+	    			double traveled;
 	    			
-	    			if (traveled > length)
+	    			while (traveled > length)
 	    			{
-	    				drive.arcadeDrive(autoDriveSpeed, 0); 
+	    				drive.arcadeDrive(autoDriveSpeed, 0);
+	    				traveled = (double) ((frontLeftE.getDistance() + frontRightE.getDistance()) / 2);
 	    			}
-	    			else
-	    			{
-	    				drive.arcadeDrive(0, 0);
-// change to while loop and reset encoders 
-	    			}
+	    			drive.arcadeDrive(0, 0); 
+	    			frontLeftE.reset();
+	    			frontRightE.reset();
 	    		}
 	    		
 	    		// Rotate command
