@@ -91,9 +91,9 @@ public class Robot extends IterativeRobot {
     			case "drive":
 	    		{
 	    			double length = (double) value;
-	    			double traveled;
+	    			double traveled = 0;
 	    			
-	    			while (traveled > length)
+	    			while (traveled < length)
 	    			{
 	    				drive.arcadeDrive(autoDriveSpeed, 0);
 	    				traveled = (double) ((frontLeftE.getDistance() + frontRightE.getDistance()) / 2);
