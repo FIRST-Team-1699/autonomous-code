@@ -72,77 +72,7 @@ public class Robot extends IterativeRobot {
     @SuppressWarnings("rawtypes")
 	public void autonomousPeriodic()
     {
-    	int count1 = 0;
-    	ArrayList commands = new ArrayList();
-    	
-    	
-    	// Read through ArrayList
-    	while (count1 != commands.size())
-    	{
-    		// Looks for key words in the ini
-    		ArrayList ref = (ArrayList) commands.get(count1);
-    		Double value = (Double) ref.get(1);
-    		String keyword = ((String) (ref.get(0))).toLowerCase();
-    		
-    		// Make a case for all possible words
-    		switch (keyword)
-    		{
-	    		// Drive command
-    			case "drive":
-	    		{
-	    			double length = (double) value;
-	    			double traveled = 0;
-	    			
-	    			while (traveled < length)
-	    			{
-	    				drive.arcadeDrive(autoDriveSpeed, 0);
-	    				traveled = (double) ((frontLeftE.getDistance() + frontRightE.getDistance()) / 2);
-	    			}
-	    			drive.arcadeDrive(0, 0); 
-	    			frontLeftE.reset();
-	    			frontRightE.reset();
-	    		}
-	    		
-	    		// Rotate command
-	    		case "rotate":
-	    		{
-	    			double turn = (double) value;
-	    			drive.arcadeDrive(0, turn);
-	    		}
-	    		
-	    		// Sleep command
-	    		case "sleep":
-	    		{
-	    			try {Thread.sleep((long) (value * 1000));} 
-	    			catch (InterruptedException e) {e.printStackTrace();}
-	    		}
-	    		
-	    		// setAngle command
-	    		case "setAngle":
-	    		{
-	    			// insert reference to shooter adjustment code
-	    		}
-	    		
-	    		// Shoot command
-	    		case "shoot":
-	    		{
-	    			// insert reference to shooter code
-	    		}
-	    		
-	    		default:
-	    		{
-	    			System.out.println("Unknown command at line: " + count1);
-	    		}	
-	    	}
-
-    		// A safety that will stop the robot after a command is executed
-    		drive.arcadeDrive(0, 0);
-    		/*
-    		 * Insert shooter code stop here.
-    		 */
-    		// Continue the loop!
-    		count1 += 1;
-    	}
+    	// call Autonomous here.
     }
 
 
