@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1699.robot;
 
 import java.util.ArrayList;
+
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
 

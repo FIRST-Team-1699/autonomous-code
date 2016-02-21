@@ -1,11 +1,9 @@
 package org.usfirst.frc.team1699.robot;
 
-import java.util.ArrayList;
-
+import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -17,35 +15,36 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * directory.
  */
 public class Robot extends IterativeRobot {
-    final String defaultAuto = "Default";
-    final String auto1 = "Autonomous 1";
-    final String auto2 = "Autonomous 2";
-    final String auto3 = "Autonomous 3";
     String autoSelected;
-    SendableChooser chooser;
 	
     // The edits start here
-    Encoder frontLeftE = new Encoder(0, 1); // more data needs to be added
-    Encoder frontRightE = new Encoder(2, 3); // ^^^
+    Encoder frontLeftE; // more data needs to be added
+    Encoder frontRightE; // ^^^
     
-    RobotDrive drive = new RobotDrive(10, 11, 12, 13);
+    CANTalon rightDrive1 = new CANTalon(10);
+    CANTalon rightDrive2 = new CANTalon(11);
+    CANTalon leftDrive1 = new CANTalon(12);
+    CANTalon leftDrive2 = new CANTalon(13);    
+    
+    RobotDrive drive = new RobotDrive(leftDrive1, leftDrive2, rightDrive1, rightDrive2); 
     
     iniReader autoIni;
     iniReader configIni = new iniReader("1699-config.ini");
     
-    double autoDriveSpeed = configIni.getValue("autoDriveSpeed");
+    
+    //double autoDriveSpeed = configIni.getValue("autoDriveSpeed");
+    double autoDriveSpeed = .4;
     
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-        chooser = new SendableChooser();
-        chooser.addDefault("Auto0", defaultAuto);
-        chooser.addObject("Auto1", auto1);
-        chooser.addObject("Auto2", auto2);
-        chooser.addObject("Auto3", auto3);
-        SmartDashboard.putData("Auto Choices", chooser);
+    	frontLeftE = new Encoder(1, 2, false, Encoder.EncodingType.k4X);
+    	frontRightE = new Encoder(3, 4, false, Encoder.EncodingType.k4X);
+    	
+    	frontLeftE.reset();
+    	frontRightE.reset();
     }
     
 	/**
@@ -59,17 +58,9 @@ public class Robot extends IterativeRobot {
 	 */
     public void autonomousInit()
     {
-    	autoSelected = (String) chooser.getSelected();
-//		autoSelected = SmartDashboard.getString("Auto Selector", defaultAuto);
-		System.out.println("Auto selected: " + autoSelected);
-		if (autoSelected.equals("Auto0")) {autoIni = new iniReader("1699-autonomous-def.ini");}
-		if (autoSelected.equals("Auto1")) {autoIni = new iniReader("1699-autonomous-1.ini");}
-		if (autoSelected.equals("Auto2")) {autoIni = new iniReader("1699-autonomous-2.ini");}
-		if (autoSelected.equals("Auto3")) {autoIni = new iniReader("1699-autonomous-3.ini");}
+    	
     }
-
     // Called during Auto
-    @SuppressWarnings("rawtypes")
 	public void autonomousPeriodic()
     {
     	// call Autonomous here.
@@ -80,7 +71,10 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-        
+    	System.out.println("Left");
+        System.out.println(frontLeftE.getDistance());
+        System.out.println("Right");
+        System.out.println(frontRightE.getDistance());
     }
     
     /**
