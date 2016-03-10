@@ -1,10 +1,3 @@
-# Autonomous-Code
-Our Autonomous Code, used on the 2013 Robot onward, with many edits. 
+# FIRST Team 1699's 2016 Code Repository
 
-The 2013 to 2015 "-archive" branches are written in LabView, master will be written in Java.  
-
-# Usage
-
-Currently, the code is placed into the autonomous code loop and executed using the ini-Reader.
-
-This is an experimental version, this has not been tested on a robot or in a sim.
+This is 2016 robot code with the autonomous written in a CommandRobot format. This could be used at a later date, due to the fact that we plan to move over to CommandRobot sometime. 
