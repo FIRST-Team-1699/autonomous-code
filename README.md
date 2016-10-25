@@ -5,6 +5,3 @@ The 2013 to 2015 "-archive" branches are written in LabView, master will be writ
 
 # Usage
 
-Currently, the code is placed into the autonomous code loop and executed using the ini-Reader.
-
-This is an experimental version, this has not been tested on a robot or in a sim.
