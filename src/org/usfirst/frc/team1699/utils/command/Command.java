@@ -24,6 +24,7 @@ public abstract class Command {
 
 	public abstract void init();
 	public abstract void run();
+	public abstract void outputToDashboard();
 	public abstract void zeroAllSensors(); // zeroAllSensors may need to be looked at and changed
 	//public abstract boolean isFinished(); Not used at this time may change in the future.
 
