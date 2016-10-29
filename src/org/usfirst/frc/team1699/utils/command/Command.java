@@ -39,4 +39,9 @@ public abstract class Command {
 	public String toString() {
 		return "Command [name=" + name + ", id=" + id + "]";
 	}
+	
+	@Override
+	public boolean equals(String inpStr){
+		return this.name.equals(inpStr);
+	}
 }
