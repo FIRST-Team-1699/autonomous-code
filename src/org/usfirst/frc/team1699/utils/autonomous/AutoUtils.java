@@ -20,6 +20,15 @@ public class AutoUtils {
 		}
 	}
 	
+	public static double parseDouble(String s){
+		try{
+			return Double.parseDouble(s);
+		}catch(NumberFormatException e){
+			e.printStackTrace();
+			return 0;
+		}
+	}
+	
 	public static String[] loadFileAsArray(String path, int numLines){
 		String[] fileAsString = new String[numLines];
 		try ( // try-with-resources; automatically .close() at the end

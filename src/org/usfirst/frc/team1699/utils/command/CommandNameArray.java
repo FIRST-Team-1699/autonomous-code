@@ -10,7 +10,6 @@ import java.util.ArrayList;
 public class CommandNameArray {
 	
 		// Should store name and id and make sure that no id or name is a duplicate
-
 		private ArrayList<String> list;
 
 		public CommandNameArray() {
@@ -27,5 +26,9 @@ public class CommandNameArray {
 
 		public ArrayList<String> getList() {
 			return list;
+		}
+		
+		public boolean contains(String str){
+			return list.contains(str);
 		}
 }
