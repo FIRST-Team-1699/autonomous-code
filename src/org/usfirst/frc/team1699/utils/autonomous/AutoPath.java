@@ -56,7 +56,6 @@ public class AutoPath {
 		
 		//Needs to be tested and may not work
 		((Command) cmd).runAuto(distance, speed);
-		
 	}
 	
 	public Object getCommandObject(String[] cmdLine) throws CommandNotFoundException{
