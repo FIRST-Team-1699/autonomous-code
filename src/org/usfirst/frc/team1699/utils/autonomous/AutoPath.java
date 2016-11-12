@@ -48,41 +48,61 @@ public class AutoPath {
 	 * @param inp
 	 * @throws CommandNotFoundException
 	 */
-	//We may want to split this up into more than one method
 	public void callCommandFromString(String inp) throws CommandNotFoundException{
 		String[] cmdLine = inp.split(" ");
-		String cmdStr;
-		double speed = 0;
-		int distance = 0;
+		double speed = getSpeed(cmdLine);
+		int distance = getDistance(cmdLine);
+		Object cmd = getCommandObject(cmdLine);
+		
+		//Needs to be tested and may not work
+		((Command) cmd).runAuto(distance, speed);
+		
+	}
+	
+	public Object getCommandObject(String[] cmdLine) throws CommandNotFoundException{
+		@SuppressWarnings("unused")
+		String cmdStr = null;
 		Object cmd = null;
+		
 		if(Command.getCmdNames().contains(cmdLine[0])){
 			cmdStr = cmdLine[0];
 			
 			for(int i = 0; i <= cmds.length; i++){
 				if(cmds[i].equals(cmds)){
 					cmd = cmds[i];
+					return cmd;
 				}
 			}
 		}else{
 			throw new CommandNotFoundException();
 		}
+		return null;
+	}
+	
+	public int getDistance(String[] cmdLine){
+		int distance = 0;
 		
 		for(int i = 0; i <= cmdLine.length; i++){
 			if(((cmdLine[i].equals("until")) || cmdLine[i].equals("for")) && (i + 1 < cmdLine.length)){
 				distance = AutoUtils.parseInt(cmdLine[i]);
-				break;
+				return distance;
 			}
 		}
+		
+		return 0;
+	}
+	
+	public double getSpeed(String[] cmdLine){
+		double speed = 0.0;
 		
 		for(int j = 0; j <= cmdLine.length; j++){
 			if((cmdLine[j].equals("at")) && (j + 1 < cmdLine.length)){
 				speed = AutoUtils.parseDouble(cmdLine[j + 1]);
-				break;
+				return speed;
 			}
 		}
 		
-		((Command) cmd).runAuto(distance, speed);
-		
+		return 0.0;
 	}
 	
 	/**
