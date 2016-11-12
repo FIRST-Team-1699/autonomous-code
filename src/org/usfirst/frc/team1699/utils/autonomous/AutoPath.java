@@ -22,7 +22,18 @@ public class AutoPath {
 		fileAsString = AutoUtils.loadFileAsArray(path, numLines);
 	}
 	
-	//Drive for 20 at 0.6
+	public void runStript(){
+		for(int i = 0; i <= fileAsString.length; i++){
+			try{
+				callCommandFromString(fileAsString[i]);
+			}catch(CommandNotFoundException e){
+				System.out.println("Your autonomous script has failed because a command does not exist.");
+				e.printStackTrace();
+				break;
+			}
+		}
+	}
+	
 	public void callCommandFromString(String inp) throws CommandNotFoundException{
 		String[] cmdLine = inp.split(" ");
 		String cmdStr;
