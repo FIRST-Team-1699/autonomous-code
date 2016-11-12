@@ -1,3 +1,8 @@
+/**
+ * This class holds all of the utilities used in autonomous
+ * 
+ * @author squirlemaster42
+ */
 package org.usfirst.frc.team1699.utils.autonomous;
 
 import java.io.BufferedReader;
