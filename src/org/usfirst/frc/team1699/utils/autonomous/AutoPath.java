@@ -48,6 +48,7 @@ public class AutoPath {
 	 * @param inp
 	 * @throws CommandNotFoundException
 	 */
+	//We may want to split this up into more than one method
 	public void callCommandFromString(String inp) throws CommandNotFoundException{
 		String[] cmdLine = inp.split(" ");
 		String cmdStr;
