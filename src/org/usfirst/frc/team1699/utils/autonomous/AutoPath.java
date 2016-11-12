@@ -11,13 +11,17 @@ public class AutoPath {
 	
 	private String path;
 	private String[] fileAsString;
-	private int numLines;
 	private Object[] cmds;
 	
-	//The object array should include commands
+	/**
+	 * Constructor
+	 * 
+	 * @param path
+	 * @param numLines
+	 * @param cmds
+	 */
 	public AutoPath(String path, int numLines, Object[] cmds){
 		this.path = path;
-		this.numLines = numLines;
 		this.cmds = cmds;
 		fileAsString = AutoUtils.loadFileAsArray(path, numLines);
 	}
@@ -96,15 +100,6 @@ public class AutoPath {
 	 */
 	public String[] getFileAsString() {
 		return fileAsString;
-	}
-	
-	/**
-	 * Allows access to number of lines
-	 * 
-	 * @param numLines
-	 */
-	public void setNumLines(int numLines){
-		this.numLines = numLines;
 	}
 
 }
