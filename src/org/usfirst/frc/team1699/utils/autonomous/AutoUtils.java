@@ -55,18 +55,10 @@ public class AutoUtils {
 	 */
 	public static String[] loadFileAsArray(String path, int numLines){
 		String[] fileAsString = new String[numLines];
-		try ( // try-with-resources; automatically .close() at the end
-			BufferedReader br = new BufferedReader(new FileReader(path));
-			) {
-			String line;
-			while((line = br.readLine()) != null){
-				String[] l = line.split(" ");
-				for(int j = 0; j < l.length; j++){
-					fileAsString[j] = l[j];
-				}
-				
+		try (BufferedReader br = new BufferedReader(new FileReader(path));) {
+			for(int i = 0; i < numLines; i++){
+				fileAsString[i] = br.readLine();
 			}
-			// br.close() here would not be called if an exception was thrown
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

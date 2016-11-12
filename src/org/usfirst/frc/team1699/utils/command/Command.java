@@ -13,8 +13,8 @@ public abstract class Command {
 
 	private String name;
 	private int id;
-	private static CommandNameArray cmdNames;
-	private static CommandIdArray cmdId;
+	private static CommandNameArray cmdNames = new CommandNameArray();
+	private static CommandIdArray cmdId = new CommandIdArray();
 
 	// id is used for commands run in auto. It should be set to an integer
 	// value that corresponds to
