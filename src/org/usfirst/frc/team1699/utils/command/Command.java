@@ -28,7 +28,7 @@ public abstract class Command {
 
 	public abstract void init();
 	public abstract void run();
-	public abstract void runAuto(int distance, double speed);
+	public abstract void runAuto(int distance, double speed, boolean useSensor);
 	public abstract boolean autoCommandDone();
 	public abstract void outputToDashboard();
 	public abstract void zeroAllSensors();

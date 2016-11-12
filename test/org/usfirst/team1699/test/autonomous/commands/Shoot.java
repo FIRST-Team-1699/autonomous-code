@@ -17,8 +17,8 @@ public class Shoot extends org.usfirst.frc.team1699.utils.command.Command{
 	}
 	
 	@Override
-	public void runAuto(int distance, double speed) {
-		System.out.println(distance + " " + speed);
+	public void runAuto(int distance, double speed, boolean useSensor) {
+		System.out.println(distance + " " + speed + " " + useSensor);
 	}
 
 	@Override

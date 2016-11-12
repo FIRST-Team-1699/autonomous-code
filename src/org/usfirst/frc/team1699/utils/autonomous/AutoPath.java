@@ -55,9 +55,23 @@ public class AutoPath {
 		double speed = getSpeed(cmdLine);
 		int distance = getDistance(cmdLine);
 		Object cmd = getCmd(cmdLine);
+		boolean useSensor = getUseSensor(cmdLine);
 		
-		((Command) cmd).runAuto(distance, speed);
+		((Command) cmd).runAuto(distance, speed, useSensor);
 		
+	}
+	
+	public boolean getUseSensor(String[] cmdLine){
+		try{
+			for(int i = 0; i <= cmdLine.length; i++){
+				if(cmdLine[i].equals("until")){
+					return true;
+				}
+			}
+		}catch(ArrayIndexOutOfBoundsException e){
+			return false;
+		}
+		return false;
 	}
 	
 	public Object getCmd(String[] cmdLine) throws CommandNotFoundException{
