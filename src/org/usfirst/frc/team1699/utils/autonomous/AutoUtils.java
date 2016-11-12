@@ -16,6 +16,12 @@ import org.usfirst.frc.team1699.utils.inireader.ConfigSection;
 
 public class AutoUtils {
 	
+	/**
+	 * Converts String to integer
+	 * 
+	 * @param s
+	 * @return
+	 */
 	public static int parseInt(String s){
 		try{
 			return Integer.parseInt(s);
@@ -25,6 +31,12 @@ public class AutoUtils {
 		}
 	}
 	
+	/**
+	 * Converts String to double
+	 * 
+	 * @param s
+	 * @return
+	 */
 	public static double parseDouble(String s){
 		try{
 			return Double.parseDouble(s);
@@ -34,6 +46,13 @@ public class AutoUtils {
 		}
 	}
 	
+	/**
+	 * Reads a file and adds each line as a String to an array
+	 * 
+	 * @param path
+	 * @param numLines
+	 * @return
+	 */
 	public static String[] loadFileAsArray(String path, int numLines){
 		String[] fileAsString = new String[numLines];
 		try ( // try-with-resources; automatically .close() at the end
@@ -56,6 +75,14 @@ public class AutoUtils {
 		return fileAsString;
 	}
 	
+	/**
+	 * Reads a file and returns it as an array of integers
+	 * 
+	 * @param file
+	 * @param mode
+	 * @return
+	 */
+	@Deprecated
 	public static int[] loadFileAsArray(ConfigFile file, int mode) {
 		
 		ArrayList<ConfigSection> sections = new ArrayList<>();
