@@ -28,7 +28,6 @@ public abstract class Command {
 
 	public abstract void init();
 	public abstract void run();
-	public abstract void autoInit();
 	public abstract void runAuto(int distance, double speed);
 	public abstract boolean autoCommandDone();
 	public abstract void outputToDashboard();

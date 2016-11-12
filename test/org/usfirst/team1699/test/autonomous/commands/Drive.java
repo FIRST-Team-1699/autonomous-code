@@ -15,12 +15,7 @@ public class Drive extends org.usfirst.frc.team1699.utils.command.Command{
 	public void run() {
 		
 	}
-
-	@Override
-	public void autoInit() {
-		
-	}
-
+	
 	@Override
 	public void runAuto(int distance, double speed) {
 		System.out.println(distance + " " + speed);
