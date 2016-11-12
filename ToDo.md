@@ -7,3 +7,5 @@
 3. ~~Test~~
 
 4. Make a new timer
+
+5. Change code to use arrayList instead of arrays
