@@ -31,7 +31,7 @@ public class AutoPath {
 	 * Runs all lines of file (main)
 	 */
 	public void runScript(){
-		for(int i = 0; i <= fileAsString.length; i++){
+		for(int i = 0; i < fileAsString.length; i++){
 			try{
 				callCommandFromString(fileAsString[i]);
 			}catch(CommandNotFoundException e){
@@ -65,9 +65,9 @@ public class AutoPath {
 			String cmdStr = cmdLine[0];
 			
 			for(int i = 0; i < cmds.length; i++){
-				if(cmds[i].equals(cmdStr)){
+				Command cmdToTest = (Command) cmds[i];
+				if(cmdToTest.equals(cmdStr)){
 					Object cmd = cmds[i];
-					System.out.println("Yes");
 					return cmd;
 				}
 			}
@@ -79,11 +79,15 @@ public class AutoPath {
 	}
 	
 	public int getDistance(String[] cmdLine){
-		for(int i = 0; i <= cmdLine.length; i++){
-			if(((cmdLine[i].equals("until")) || cmdLine[i].equals("for")) && (i + 1 < cmdLine.length)){
-				int distance = AutoUtils.parseInt(cmdLine[i + 1]);
-				return distance;
+		try{
+			for(int i = 0; i <= cmdLine.length; i++){
+				if(((cmdLine[i].equals("until")) || cmdLine[i].equals("for")) && (i + 1 < cmdLine.length)){
+					int distance = AutoUtils.parseInt(cmdLine[i + 1]);
+					return distance;
+				}
 			}
+		}catch(ArrayIndexOutOfBoundsException e){
+			return 0;
 		}
 		
 		return 0;
