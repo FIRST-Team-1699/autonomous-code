@@ -22,7 +22,10 @@ public class AutoPath {
 		fileAsString = AutoUtils.loadFileAsArray(path, numLines);
 	}
 	
-	public void runStript(){
+	/**
+	 * Runs all lines of file (main)
+	 */
+	public void runScript(){
 		for(int i = 0; i <= fileAsString.length; i++){
 			try{
 				callCommandFromString(fileAsString[i]);
@@ -34,6 +37,13 @@ public class AutoPath {
 		}
 	}
 	
+	/**
+	 * Runs each line
+	 * Called from runScript()
+	 * 
+	 * @param inp
+	 * @throws CommandNotFoundException
+	 */
 	public void callCommandFromString(String inp) throws CommandNotFoundException{
 		String[] cmdLine = inp.split(" ");
 		String cmdStr;
@@ -70,14 +80,29 @@ public class AutoPath {
 		
 	}
 	
+	/**
+	 * Returns path to file that contains autonomous scripts
+	 * 
+	 * @return
+	 */
 	public String getPath() {
 		return path;
 	}
  
+	/**
+	 * Returns file as string array
+	 * 
+	 * @return
+	 */
 	public String[] getFileAsString() {
 		return fileAsString;
 	}
 	
+	/**
+	 * Allows access to number of lines
+	 * 
+	 * @param numLines
+	 */
 	public void setNumLines(int numLines){
 		this.numLines = numLines;
 	}
