@@ -48,9 +48,9 @@ public class AutoPath {
 			}
 		}
 		
-		for(int i = 0; i <= cmdLine.length; i++){
-			if((cmdLine[i].equals("at")) && (i + 1 < cmdLine.length)){
-				speed = AutoUtils.parseDouble(cmdLine[i + 1]);
+		for(int j = 0; j <= cmdLine.length; j++){
+			if((cmdLine[j].equals("at")) && (j + 1 < cmdLine.length)){
+				speed = AutoUtils.parseDouble(cmdLine[j + 1]);
 				break;
 			}
 		}
