@@ -1,5 +1,7 @@
 #ToDo
 
-1. Remove useless files
+1. Update from a basic text file to Config file
 
-2. Update usage
+2. Add for/until as know keywords and add functionality to those keywords
+
+3. Test
