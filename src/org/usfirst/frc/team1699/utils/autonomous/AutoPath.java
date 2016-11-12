@@ -69,10 +69,6 @@ public class AutoPath {
 		((Command) cmd).runAuto(distance, speed);
 		
 	}
-;	
-	public Object stringToObject(String str){
-		return null;
-	}
 	
 	public String getPath() {
 		return path;
@@ -84,10 +80,6 @@ public class AutoPath {
 	
 	public void setNumLines(int numLines){
 		this.numLines = numLines;
-	}
-
-	public int getWidth() {
-		return numLines;
 	}
 
 }
