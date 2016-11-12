@@ -49,7 +49,7 @@ public abstract class Command {
 	}
 	
 	public boolean equals(String inpStr){
-		return this.name.equals(inpStr);
+		return this.name.toLowerCase().equals(inpStr.toLowerCase());
 	}
 	
 	public static CommandNameArray getCmdNames(){

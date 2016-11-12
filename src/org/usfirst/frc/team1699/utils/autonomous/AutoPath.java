@@ -65,8 +65,9 @@ public class AutoPath {
 			String cmdStr = cmdLine[0];
 			
 			for(int i = 0; i < cmds.length; i++){
-				if(cmds[i].equals(cmds)){
+				if(cmds[i].equals(cmdStr)){
 					Object cmd = cmds[i];
+					System.out.println("Yes");
 					return cmd;
 				}
 			}
