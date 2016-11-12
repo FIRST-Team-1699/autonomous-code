@@ -31,8 +31,7 @@ public abstract class Command {
 	public abstract void runAuto(int distance, double speed);
 	public abstract boolean autoCommandDone();
 	public abstract void outputToDashboard();
-	public abstract void zeroAllSensors(); // zeroAllSensors may need to be looked at and changed
-	//public abstract boolean isFinished(); Not used at this time may change in the future.
+	public abstract void zeroAllSensors();
 
 	public String getName() {
 		return name;
