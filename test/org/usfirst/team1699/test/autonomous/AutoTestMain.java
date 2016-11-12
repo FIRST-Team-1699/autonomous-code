@@ -8,7 +8,7 @@ public class AutoTestMain {
 	@Test
 	public void autonomousTest(){
 		String filePath = "/test.nav";
-		AutoPath path = new AutoPath(null, 0, null);
+		AutoPath path = new AutoPath(filePath, 3, null);
 		path.callCommandFromString(null);
 	}
 }
