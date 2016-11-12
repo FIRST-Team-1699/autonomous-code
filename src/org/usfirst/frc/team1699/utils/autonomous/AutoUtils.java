@@ -82,6 +82,7 @@ public class AutoUtils {
 	 * @param mode
 	 * @return
 	 */
+	@SuppressWarnings("null")
 	@Deprecated
 	public static int[] loadFileAsArray(ConfigFile file, int mode) {
 		
