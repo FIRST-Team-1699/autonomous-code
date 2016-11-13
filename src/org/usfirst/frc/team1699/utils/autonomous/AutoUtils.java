@@ -67,6 +67,20 @@ public class AutoUtils {
 		return fileAsString;
 	}
 	
+	public static ArrayList<String> loadFileAsArray(String path){
+		ArrayList<String> fileAsString = new ArrayList<String>();
+		try (BufferedReader br = new BufferedReader(new FileReader(path));) {
+			while(!(br.readLine().equals(""))){
+				fileAsString.add(br.readLine());
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return fileAsString;
+	}
+	
 	/**
 	 * Reads a file and returns it as an array of integers
 	 * 
