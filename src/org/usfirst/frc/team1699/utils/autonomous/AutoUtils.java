@@ -93,6 +93,7 @@ public class AutoUtils {
 	@Deprecated
 	public static int[] loadFileAsArray(ConfigFile file, int mode) {
 		
+		@SuppressWarnings("unused")
 		ArrayList<ConfigSection> sections = new ArrayList<>();
 		
 		// find a ConfigSection that has the text "autonomous" and mode in the name
