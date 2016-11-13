@@ -67,6 +67,12 @@ public class AutoUtils {
 		return fileAsString;
 	}
 	
+	/**
+	 * Reads a file and returns it as an ArrayList
+	 * 
+	 * @param path
+	 * @return
+	 */
 	//Does not currently work
 	public static ArrayList<String> loadFileAsArray(String path){
 		ArrayList<String> fileAsString = new ArrayList<String>();

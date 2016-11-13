@@ -61,6 +61,12 @@ public class AutoPath {
 		
 	}
 	
+	/**
+	 * Determines whether to use sensor or not
+	 * 
+	 * @param cmdLine
+	 * @return
+	 */
 	public boolean getUseSensor(String[] cmdLine){
 		try{
 			for(int i = 0; i <= cmdLine.length; i++){
@@ -74,6 +80,13 @@ public class AutoPath {
 		return false;
 	}
 	
+	/**
+	 * Looks as a string and converts it to a command
+	 * 
+	 * @param cmdLine
+	 * @return
+	 * @throws CommandNotFoundException
+	 */
 	public Object getCmd(String[] cmdLine) throws CommandNotFoundException{
 		if(Command.getCmdNames().contains(cmdLine[0])){
 			String cmdStr = cmdLine[0];
@@ -92,6 +105,12 @@ public class AutoPath {
 		return null;
 	}
 	
+	/**
+	 * Gets the distance from a string
+	 * 
+	 * @param cmdLine
+	 * @return
+	 */
 	public int getDistance(String[] cmdLine){
 		try{
 			for(int i = 0; i <= cmdLine.length; i++){
@@ -107,6 +126,12 @@ public class AutoPath {
 		return 0;
 	}
 	
+	/**
+	 * Gets the speed from a string
+	 * 
+	 * @param cmdLine
+	 * @return
+	 */
 	public double getSpeed(String[] cmdLine){
 		for(int j = 0; j <= cmdLine.length; j++){
 			if((cmdLine[j].equals("at")) && (j + 1 < cmdLine.length)){
