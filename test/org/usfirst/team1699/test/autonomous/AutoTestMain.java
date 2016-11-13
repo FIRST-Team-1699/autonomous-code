@@ -2,6 +2,7 @@ package org.usfirst.team1699.test.autonomous;
 
 import org.junit.Test;
 import org.usfirst.frc.team1699.utils.autonomous.AutoPath;
+import org.usfirst.frc.team1699.utils.autonomous.AutoUtils;
 import org.usfirst.team1699.test.autonomous.commands.Drive;
 import org.usfirst.team1699.test.autonomous.commands.Shoot;
 import org.usfirst.team1699.test.autonomous.commands.Turn;
@@ -23,5 +24,11 @@ public class AutoTestMain {
 		
 		AutoPath path = new AutoPath(filePath, 4, obj);
 		path.runScript();
+	}
+	
+	@Test
+	public void arrayListFileTest(){
+		String filePath = "autoTestFiles/test.nav";
+		System.out.println(AutoUtils.loadFileAsArray(filePath));
 	}
 }

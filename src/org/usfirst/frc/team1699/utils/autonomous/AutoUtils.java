@@ -67,6 +67,7 @@ public class AutoUtils {
 		return fileAsString;
 	}
 	
+	//Does not currently work
 	public static ArrayList<String> loadFileAsArray(String path){
 		ArrayList<String> fileAsString = new ArrayList<String>();
 		try (BufferedReader br = new BufferedReader(new FileReader(path));) {
