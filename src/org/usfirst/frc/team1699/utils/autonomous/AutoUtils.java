@@ -73,12 +73,13 @@ public class AutoUtils {
 	 * @param path
 	 * @return
 	 */
-	//Does not currently work
 	public static ArrayList<String> loadFileAsArray(String path){
 		ArrayList<String> fileAsString = new ArrayList<String>();
 		try (BufferedReader br = new BufferedReader(new FileReader(path));) {
-			while(!(br.readLine().equals(""))){
-				fileAsString.add(br.readLine());
+			String read = br.readLine();
+			while(read != null){
+				fileAsString.add(read);
+				read = br.readLine();
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
