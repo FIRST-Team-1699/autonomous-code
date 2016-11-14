@@ -16,9 +16,12 @@ public abstract class Command {
 	private static CommandNameArray cmdNames = new CommandNameArray();
 	private static CommandIdArray cmdId = new CommandIdArray();
 
-	// id is used for commands run in auto. It should be set to an integer
-	// value that corresponds to
-	// the value used when wanting to call the command from the autonomous file.
+	/**
+	 * Constructor
+	 * 
+	 * @param name
+	 * @param id
+	 */
 	public Command(String name, int id) {
 		this.name = name;
 		this.id = id;
@@ -26,34 +29,92 @@ public abstract class Command {
 		cmdId.addId(id);
 	}
 
+	/**
+	 * This method should contain initializers
+	 */
 	public abstract void init();
+	
+	/**
+	 * This method should contain code run by teleop
+	 */
 	public abstract void run();
+	
+	/**
+	 * This method should contain code run by auto script
+	 * 
+	 * @param distance
+	 * @param speed
+	 * @param useSensor
+	 */
 	public abstract void runAuto(int distance, double speed, boolean useSensor);
+	
+	/**
+	 * This method should contains code that returns if the auto command is done
+	 * 
+	 * @return
+	 */
 	public abstract boolean autoCommandDone();
+	
+	/**
+	 * This command should contain code to output value to a dashboard
+	 */
 	public abstract void outputToDashboard();
+	
+	/**
+	 * This method should contain code to zero all sensor values
+	 */
 	public abstract void zeroAllSensors();
 
+	/**
+	 * Returns the name of the command
+	 * 
+	 * @return
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Returns the id of the command
+	 * 
+	 * @return
+	 */
 	public int getId() {
 		return id;
 	}
 
+	/**
+	 * Turns the command into a string
+	 */
 	@Override
 	public String toString() {
 		return "Command [name=" + name + ", id=" + id + "]";
 	}
 	
+	/**
+	 * .equals override
+	 * 
+	 * @param inpStr
+	 * @return
+	 */
 	public boolean equals(String inpStr){
 		return this.name.toLowerCase().equals(inpStr.toLowerCase());
 	}
 	
+	/**
+	 * Gets command name array
+	 * 
+	 * @return
+	 */
 	public static CommandNameArray getCmdNames(){
 		return cmdNames;
 	}
 	
+	/**
+	 * Gets command id array
+	 * 
+	 * @return
+	 */
 	public static CommandIdArray getCmdId(){
 		return cmdId;
 	}

@@ -12,10 +12,18 @@ public class CommandIdArray {
 
 	private ArrayList<Integer> list;
 
+	/**
+	 * Constructor
+	 */
 	public CommandIdArray() {
 		list = new ArrayList<Integer>();
 	}
 
+	/**
+	 * Adds id to the array
+	 * 
+	 * @param id
+	 */
 	public void addId(int id) {
 		if (list.contains(id)) {
 			System.err.println("Id has already been used.");
@@ -25,6 +33,11 @@ public class CommandIdArray {
 		list.add(id);
 	}
 
+	/**
+	 * Returns the id array
+	 * 
+	 * @return
+	 */
 	public ArrayList<Integer> getList() {
 		return list;
 	}
