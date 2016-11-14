@@ -54,7 +54,7 @@ public class AutoPath {
 	public void callCommandFromString(String inp){
 		String[] cmdLine = inp.split(" ");
 		double speed = getSpeed(cmdLine);
-		int distance = getDistance(cmdLine);
+		double distance = getDistance(cmdLine);
 		Object cmd = getCmd(cmdLine);
 		boolean useSensor = getUseSensor(cmdLine);
 		
@@ -112,11 +112,11 @@ public class AutoPath {
 	 * @param cmdLine
 	 * @return
 	 */
-	public int getDistance(String[] cmdLine){
+	public double getDistance(String[] cmdLine){
 		try{
 			for(int i = 0; i <= cmdLine.length; i++){
 				if(((cmdLine[i].equals("until")) || cmdLine[i].equals("for")) && (i + 1 < cmdLine.length)){
-					int distance = AutoUtils.parseInt(cmdLine[i + 1]);
+					double distance = AutoUtils.parseDouble(cmdLine[i + 1]);
 					return distance;
 				}
 			}

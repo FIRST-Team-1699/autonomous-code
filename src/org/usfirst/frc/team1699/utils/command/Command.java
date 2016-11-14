@@ -46,7 +46,7 @@ public abstract class Command {
 	 * @param speed
 	 * @param useSensor
 	 */
-	public abstract void runAuto(int distance, double speed, boolean useSensor);
+	public abstract void runAuto(double distance, double speed, boolean useSensor);
 	
 	/**
 	 * This method should contains code that returns if the auto command is done
