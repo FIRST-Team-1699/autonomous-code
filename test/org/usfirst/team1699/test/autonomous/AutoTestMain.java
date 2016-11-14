@@ -26,7 +26,7 @@ public class AutoTestMain {
 		path.runScript();
 	}
 	
-	@Test
+	//@Test
 	public void arrayListFileTest(){
 		String filePath = "autoTestFiles/test.nav";
 		System.out.println(AutoUtils.loadFileAsArray(filePath));
