@@ -99,6 +99,7 @@ public class AutoUtils {
 	 */
 	@SuppressWarnings("null")
 	@Deprecated
+	//Needs to be changed to return an arrayList
 	public static int[] loadFileAsArray(ConfigFile file, int mode) {
 		
 		@SuppressWarnings("unused")
