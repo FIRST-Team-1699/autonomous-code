@@ -49,7 +49,6 @@ public class AutoPath {
 	 * @param inp
 	 * @throws CommandNotFoundException
 	 */
-	//We may want to split this up into more than one method
 	public void callCommandFromString(String inp){
 		String[] cmdLine = inp.split(" ");
 		double speed = getSpeed(cmdLine);
