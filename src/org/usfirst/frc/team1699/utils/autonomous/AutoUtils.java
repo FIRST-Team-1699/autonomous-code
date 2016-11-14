@@ -53,6 +53,7 @@ public class AutoUtils {
 	 * @param numLines
 	 * @return
 	 */
+	@Deprecated
 	public static String[] loadFileAsArray(String path, int numLines){
 		String[] fileAsString = new String[numLines];
 		try (BufferedReader br = new BufferedReader(new FileReader(path));) {

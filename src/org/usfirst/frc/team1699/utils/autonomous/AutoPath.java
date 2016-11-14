@@ -5,12 +5,14 @@
  */
 package org.usfirst.frc.team1699.utils.autonomous;
 
+import java.util.ArrayList;
+
 import org.usfirst.frc.team1699.utils.command.Command;
 
 public class AutoPath {
 	
 	private String path;
-	private String[] fileAsString;
+	private ArrayList<String> fileAsString;
 	private Object[] cmds;
 	
 	/**
@@ -21,19 +23,19 @@ public class AutoPath {
 	 * @param cmds
 	 */
 	//Change to arrayList 
-	public AutoPath(String path, int numLines, Object[] cmds){
+	public AutoPath(String path, Object[] cmds){
 		this.path = path;
 		this.cmds = cmds;
-		fileAsString = AutoUtils.loadFileAsArray(path, numLines);
+		fileAsString = AutoUtils.loadFileAsArray(path);
 	}
 	
 	/**
 	 * Runs all lines of file (main)
 	 */
 	public void runScript(){
-		for(int i = 0; i < fileAsString.length; i++){
+		for(int i = 0; i < fileAsString.size(); i++){
 			try{
-				callCommandFromString(fileAsString[i]);
+				callCommandFromString(fileAsString.get(i));
 			}catch(CommandNotFoundException e){
 				System.out.println("Your autonomous script has failed because a command does not exist.");
 				e.printStackTrace();
@@ -155,7 +157,7 @@ public class AutoPath {
 	 * 
 	 * @return
 	 */
-	public String[] getFileAsString() {
+	public ArrayList<String> getFileAsString() {
 		return fileAsString;
 	}
 

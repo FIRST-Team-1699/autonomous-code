@@ -22,7 +22,7 @@ public class AutoTestMain {
 		obj[1] = t;
 		obj[2] = s;
 		
-		AutoPath path = new AutoPath(filePath, 4, obj);
+		AutoPath path = new AutoPath(filePath, obj);
 		path.runScript();
 	}
 	
