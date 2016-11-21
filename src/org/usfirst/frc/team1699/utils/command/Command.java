@@ -11,10 +11,10 @@ package org.usfirst.frc.team1699.utils.command;
 
 public abstract class Command {
 
-	private String name;
-	private int id;
-	private static CommandNameArray cmdNames = new CommandNameArray();
-	private static CommandIdArray cmdId = new CommandIdArray();
+	private String name; //Holds command name
+	private int id; //Holds command id
+	private static CommandNameArray cmdNames = new CommandNameArray(); //Makes a new static instance of CommandNameArray
+	private static CommandIdArray cmdId = new CommandIdArray(); //Makes a new static instance of CommandIdArray
 
 	/**
 	 * Constructor
@@ -22,7 +22,7 @@ public abstract class Command {
 	 * @param name
 	 * @param id
 	 */
-	public Command(String name, int id) {
+	public Command(String name, int id) { //Constructor, sets instance vars equal to input and adds command name and id to respective lists
 		this.name = name;
 		this.id = id;
 		cmdNames.addName(name);
@@ -32,12 +32,12 @@ public abstract class Command {
 	/**
 	 * This method should contain initializers
 	 */
-	public abstract void init();
+	public abstract void init(); //Abstract method that should hold code that is supposed to be called during init
 	
 	/**
 	 * This method should contain code run by teleop
 	 */
-	public abstract void run();
+	public abstract void run(); //Abstract method that should hold code that is supposed to be called during teleop
 	
 	/**
 	 * This method should contain code run by auto script
@@ -46,31 +46,31 @@ public abstract class Command {
 	 * @param speed
 	 * @param useSensor
 	 */
-	public abstract void runAuto(double distance, double speed, boolean useSensor);
+	public abstract void runAuto(double distance, double speed, boolean useSensor); //Abstract method that should hold code that is supposed to be called during auto when the command is called
 	
 	/**
 	 * This method should contains code that returns if the auto command is done
 	 * 
 	 * @return
 	 */
-	public abstract boolean autoCommandDone();
+	public abstract boolean autoCommandDone(); //Abstract method that should hold code that should return true if the auto command is done
 	
 	/**
 	 * This command should contain code to output value to a dashboard
 	 */
-	public abstract void outputToDashboard();
+	public abstract void outputToDashboard(); //Abstract method that should hold code that send information to Dashboard
 	
 	/**
 	 * This method should contain code to zero all sensor values
 	 */
-	public abstract void zeroAllSensors();
+	public abstract void zeroAllSensors(); //Abstract method that should hold code that to zero any and all sensors
 
 	/**
 	 * Returns the name of the command
 	 * 
 	 * @return
 	 */
-	public String getName() {
+	public String getName() { //Returns name of command
 		return name;
 	}
 
@@ -79,7 +79,7 @@ public abstract class Command {
 	 * 
 	 * @return
 	 */
-	public int getId() {
+	public int getId() { //Returns id of command
 		return id;
 	}
 
@@ -87,7 +87,7 @@ public abstract class Command {
 	 * Turns the command into a string
 	 */
 	@Override
-	public String toString() {
+	public String toString() { //Turns the command into a string
 		return "Command [name=" + name + ", id=" + id + "]";
 	}
 	
@@ -97,7 +97,7 @@ public abstract class Command {
 	 * @param inpStr
 	 * @return
 	 */
-	public boolean equals(String inpStr){
+	public boolean equals(String inpStr){ //Used to compare commands
 		return this.name.toLowerCase().equals(inpStr.toLowerCase());
 	}
 	
@@ -106,7 +106,7 @@ public abstract class Command {
 	 * 
 	 * @return
 	 */
-	public static CommandNameArray getCmdNames(){
+	public static CommandNameArray getCmdNames(){ //Returns CommandNameArray
 		return cmdNames;
 	}
 	
@@ -115,7 +115,7 @@ public abstract class Command {
 	 * 
 	 * @return
 	 */
-	public static CommandIdArray getCmdId(){
+	public static CommandIdArray getCmdId(){ //ReturnCommandIdArray
 		return cmdId;
 	}
 	

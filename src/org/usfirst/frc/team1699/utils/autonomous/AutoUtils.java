@@ -22,7 +22,7 @@ public class AutoUtils {
 	 * @param s
 	 * @return
 	 */
-	public static int parseInt(String s){
+	public static int parseInt(String s){ //This is used to turn a string into an int
 		try{
 			return Integer.parseInt(s);
 		}catch(NumberFormatException e){
@@ -37,7 +37,7 @@ public class AutoUtils {
 	 * @param s
 	 * @return
 	 */
-	public static double parseDouble(String s){
+	public static double parseDouble(String s){ //This is used to convert a string into a double
 		try{
 			return Double.parseDouble(s);
 		}catch(NumberFormatException e){
@@ -54,7 +54,7 @@ public class AutoUtils {
 	 * @return
 	 */
 	@Deprecated
-	public static String[] loadFileAsArray(String path, int numLines){
+	public static String[] loadFileAsArray(String path, int numLines){ //This is no longer used but it took each line of a file and added it to an array
 		String[] fileAsString = new String[numLines];
 		try (BufferedReader br = new BufferedReader(new FileReader(path));) {
 			for(int i = 0; i < numLines; i++){
@@ -74,7 +74,7 @@ public class AutoUtils {
 	 * @param path
 	 * @return
 	 */
-	public static ArrayList<String> loadFileAsArray(String path){
+	public static ArrayList<String> loadFileAsArray(String path){ //Takes each line of a file and adds it to an ArrayList then returns that ArrayList
 		ArrayList<String> fileAsString = new ArrayList<String>();
 		try (BufferedReader br = new BufferedReader(new FileReader(path));) {
 			String read = br.readLine();
@@ -100,7 +100,7 @@ public class AutoUtils {
 	@SuppressWarnings("null")
 	@Deprecated
 	//Needs to be changed to return an arrayList
-	public static int[] loadFileAsArray(ConfigFile file, int mode) {
+	public static int[] loadFileAsArray(ConfigFile file, int mode) { //Takes a ConfigFile and return it as an array of ints
 		
 		@SuppressWarnings("unused")
 		ArrayList<ConfigSection> sections = new ArrayList<>();

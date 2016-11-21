@@ -10,12 +10,12 @@ import java.util.ArrayList;
 public class CommandIdArray {
 	// Should store name and id and make sure that no id or name is a duplicate
 
-	private ArrayList<Integer> list;
+	private ArrayList<Integer> list; //Hold list of ids
 
 	/**
 	 * Constructor
 	 */
-	public CommandIdArray() {
+	public CommandIdArray() { //Constructor to name new instance of an ArrayList that will hold Integer objects
 		list = new ArrayList<Integer>();
 	}
 
@@ -24,7 +24,7 @@ public class CommandIdArray {
 	 * 
 	 * @param id
 	 */
-	public void addId(int id) {
+	public void addId(int id) { //Adds id to array if it is unique
 		if (list.contains(id)) {
 			System.err.println("Id has already been used.");
 			return;
@@ -38,7 +38,7 @@ public class CommandIdArray {
 	 * 
 	 * @return
 	 */
-	public ArrayList<Integer> getList() {
+	public ArrayList<Integer> getList() { //Returns list of ids
 		return list;
 	}
 }
