@@ -6,13 +6,12 @@ import edu.wpi.first.wpilibj.SpeedController;
 
 public class DriveUtils {
 	
-	public static void driveForTime(SpeedController motCont, double timeAmt, double speed){ //Used to tell a motor to run for a specified amount of time
-		BetterTimer time = new BetterTimer();
+	public static void driveForTime(BetterTimer time, SpeedController motCont, double timeAmt, double speed){ //Used to tell a motor to run for a specified amount of time
 		time.start();
-		do{
+		if(time.getElapsed() >= timeAmt){
 			motCont.set(speed);
-		}while(time.getElapsed() < timeAmt);
-		
-		motCont.set(0);
+		}else{		
+			motCont.set(0);
+		}
 	}
 }
