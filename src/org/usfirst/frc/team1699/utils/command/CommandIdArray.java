@@ -27,7 +27,7 @@ public class CommandIdArray {
 	public void addId(int id) { //Adds id to array if it is unique
 		if (list.contains(id)) {
 			System.err.println("Id has already been used.");
-			return;
+			throw new IdUsedException();
 		}
 
 		list.add(id);

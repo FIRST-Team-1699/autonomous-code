@@ -26,7 +26,7 @@ public class CommandNameArray {
 		public void addName(String name) { //Adds name to array if it is unique
 			if(list.contains(name)){
 				System.err.println("Id has already been used.");
-				return;
+				throw new NameUsedException();
 			}
 			list.add(name);
 		}
