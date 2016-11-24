@@ -36,6 +36,14 @@ public class CommandNameArray implements List{
 		list.add(name);
 	}
 	
+	public void setName(int index, String name){
+		if(list.contains(name)){
+			System.err.println("Id has already been used.");
+			throw new NameUsedException();
+		}
+		list.set(index, name);
+	}
+	
 	/**
 	 * Returns the name array
 	 * 
@@ -76,6 +84,7 @@ public class CommandNameArray implements List{
 	}
 
 	@Override
+	@Deprecated
 	public boolean add(Object e) {
 		return list.add((String) e);
 	}
@@ -92,12 +101,14 @@ public class CommandNameArray implements List{
 
 	@SuppressWarnings("unchecked")
 	@Override
+	@Deprecated
 	public boolean addAll(Collection c) {
 		return list.addAll(c);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
+	@Deprecated
 	public boolean addAll(int index, Collection c) {
 		return list.addAll(index, c);
 	}
@@ -128,6 +139,7 @@ public class CommandNameArray implements List{
 	}
 
 	@Override
+	@Deprecated
 	public void add(int index, Object element) {
 		list.add(index, (String) element); 
 	}

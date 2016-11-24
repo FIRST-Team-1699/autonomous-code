@@ -37,6 +37,15 @@ public class CommandIdArray implements List{
 
 		list.add(id);
 	}
+	
+	public void setId(int index, int id){
+		if (list.contains(id)) {
+			System.err.println("Id has already been used.");
+			throw new IdUsedException();
+		}
+
+		list.set(index, id);
+	}
 
 	/**
 	 * Returns the id array
@@ -78,6 +87,7 @@ public class CommandIdArray implements List{
 	}
 
 	@Override
+	@Deprecated
 	public boolean add(Object e) {
 		return list.add((Integer) e);
 	}
@@ -94,12 +104,14 @@ public class CommandIdArray implements List{
 
 	@SuppressWarnings("unchecked")
 	@Override
+	@Deprecated
 	public boolean addAll(Collection c) {
 		return list.addAll(c);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
+	@Deprecated
 	public boolean addAll(int index, Collection c) {
 		return list.addAll(index, c);
 	}
@@ -125,11 +137,13 @@ public class CommandIdArray implements List{
 	}
 
 	@Override
+	@Deprecated
 	public Object set(int index, Object element) {
 		return list.set(index, (Integer) element);
 	}
 
 	@Override
+	@Deprecated
 	public void add(int index, Object element) {
 		list.add(index, (Integer) element); 
 	}
