@@ -13,7 +13,7 @@ public class AutoPath {
 	
 	private String path; //Stores the path a the text file containing auto script
 	private ArrayList<String> fileAsString; //Array list that hold the autoFile as an array of strings
-	private Object[] cmds; //Holds a list of all commands in an array
+	private ArrayList<Command> cmds; //Holds a list of all commands in an array
 	//May want to change type of array to command
 	
 	/**
@@ -23,7 +23,7 @@ public class AutoPath {
 	 * @param numLines
 	 * @param cmds
 	 */
-	public AutoPath(String path, Object[] cmds){
+	public AutoPath(String path, ArrayList<Command> cmds){
 		//Sets instance vars to values input by programmer
 		this.path = path;
 		this.cmds = cmds;
@@ -56,7 +56,7 @@ public class AutoPath {
 		String[] cmdLine = inp.split(" "); //Creates a string array and sets it equal to the input string split at spaces
 		double speed = getSpeed(cmdLine); //Makes a double called speed and set it equal to the speed specified in the auto file
 		double distance = getDistance(cmdLine); //Makes a double called distance and set it equal to the distance specified in the auto file
-		Object cmd = getCmd(cmdLine); //Makes an object called command and sets it equal to the command in the auto file
+		Command cmd = getCmd(cmdLine); //Makes an object called command and sets it equal to the command in the auto file
 		boolean useSensor = getUseSensor(cmdLine); //Makes a boolean called use sensor and set true if the auto file specifies that a sensor should be used
 		
 		((Command) cmd).runAuto(distance, speed, useSensor); //Cast the cmd object to type Command and runs the runAuto method in it
@@ -89,14 +89,14 @@ public class AutoPath {
 	 * @return
 	 * @throws CommandNotFoundException
 	 */
-	public Object getCmd(String[] cmdLine) throws CommandNotFoundException{
+	public Command getCmd(String[] cmdLine) throws CommandNotFoundException{
 		if(Command.getCmdNames().contains(cmdLine[0])){ //Looks at cmdLine and determines if the first line is a valid command
 			String cmdStr = cmdLine[0];
 			
-			for(int i = 0; i < cmds.length; i++){ //Loops through the list of command objects and determines what object matches the command then that object is returned
-				Command cmdToTest = (Command) cmds[i];
+			for(int i = 0; i < cmds.size(); i++){ //Loops through the list of command objects and determines what object matches the command then that object is returned
+				Command cmdToTest = cmds.get(i);
 				if(cmdToTest.equals(cmdStr)){
-					Object cmd = cmds[i];
+					Command cmd = cmds.get(i);
 					return cmd;
 				}
 			}
