@@ -8,4 +8,6 @@
 
 4. ~~Make a new timer~~
 
-5. Change code to use arrayList instead of arrays
+5. ~~Change code to use arrayList instead of arrays~~
+
+6. Look at CommandArrays and how they implement List
