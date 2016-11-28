@@ -8,6 +8,7 @@ public class DriveUtils {
 	
 	//Needs to be looked at
 	public static void driveForTime(BetterTimer time, SpeedController motCont, double timeAmt, double speed){ //Used to tell a motor to run for a specified amount of time
+		time.stop();		
 		time.start();
 		if(time.getElapsed() >= timeAmt){
 			motCont.set(speed);
