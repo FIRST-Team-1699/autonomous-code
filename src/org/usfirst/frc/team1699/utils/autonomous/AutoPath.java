@@ -30,6 +30,24 @@ public class AutoPath {
 	}
 	
 	/**
+	 * Returns path to file that contains autonomous scripts
+	 * 
+	 * @return
+	 */
+	public String getPath() { //Returns the file path
+		return path;
+	}
+ 
+	/**
+	 * Returns file as string array
+	 * 
+	 * @return
+	 */
+	public ArrayList<String> getFileAsString() { //Returns the ArrayList of the file as a string
+		return fileAsString;
+	}
+	
+	/**
 	 * Runs all lines of file (main)
 	 */
 	public void runScript(){
@@ -141,24 +159,6 @@ public class AutoPath {
 			}
 		}
 		return 0.0;
-	}
-	
-	/**
-	 * Returns path to file that contains autonomous scripts
-	 * 
-	 * @return
-	 */
-	public String getPath() { //Returns the file path
-		return path;
-	}
- 
-	/**
-	 * Returns file as string array
-	 * 
-	 * @return
-	 */
-	public ArrayList<String> getFileAsString() { //Returns the ArrayList of the file as a string
-		return fileAsString;
 	}
 
 }
