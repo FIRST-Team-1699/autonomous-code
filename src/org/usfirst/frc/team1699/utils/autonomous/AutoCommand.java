@@ -1,4 +1,5 @@
 public interface AutoCommand{
+	
  	/**
 	 * This method should contain code run by auto script
 	 * 
