@@ -69,7 +69,7 @@ public class AutoPath {
 	 * @param inp
 	 * @throws CommandNotFoundException
 	 */
-	public void callCommandFromString(String inp){
+	public static void callCommandFromString(String inp){
 		String[] cmdLine = inp.split(" "); //Creates a string array and sets it equal to the input string split at spaces
 		double speed = getSpeed(cmdLine); //Makes a double called speed and set it equal to the speed specified in the auto file
 		double distance = getDistance(cmdLine); //Makes a double called distance and set it equal to the distance specified in the auto file
@@ -86,7 +86,7 @@ public class AutoPath {
 	 * @param cmdLine
 	 * @return
 	 */
-	public boolean getUseSensor(String[] cmdLine){
+	public static boolean getUseSensor(String[] cmdLine){
 		try{
 			for(int i = 0; i <= cmdLine.length; i++){ //This loops looks for the word until in the cmdLine array and returns true if it is found
 				if(cmdLine[i].equals("until")){ 
@@ -106,7 +106,7 @@ public class AutoPath {
 	 * @return
 	 * @throws CommandNotFoundException
 	 */
-	public Command getCmd(String[] cmdLine) throws CommandNotFoundException{
+	public static Command getCmd(String[] cmdLine) throws CommandNotFoundException{
 		if(Command.getCmdNames().contains(cmdLine[0])){ //Looks at cmdLine and determines if the first line is a valid command
 			String cmdStr = cmdLine[0];
 			
@@ -130,7 +130,7 @@ public class AutoPath {
 	 * @param cmdLine
 	 * @return
 	 */
-	public double getDistance(String[] cmdLine){
+	public static double getDistance(String[] cmdLine){
 		try{
 			for(int i = 0; i <= cmdLine.length; i++){ //Loops through cmdLine array and looks at the value after until or for then returns that value
 				if(((cmdLine[i].equals("until")) || cmdLine[i].equals("for")) && (i + 1 < cmdLine.length)){
@@ -151,7 +151,7 @@ public class AutoPath {
 	 * @param cmdLine
 	 * @return
 	 */
-	public double getSpeed(String[] cmdLine){
+	public static double getSpeed(String[] cmdLine){
 		for(int j = 0; j <= cmdLine.length; j++){ //Loops through the cmdLine array and looks at the value after at then returns that value
 			if((cmdLine[j].equals("at")) && (j + 1 < cmdLine.length)){
 				double speed = AutoUtils.parseDouble(cmdLine[j + 1]);
