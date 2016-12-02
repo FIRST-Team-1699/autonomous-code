@@ -11,3 +11,5 @@
 5. ~~Change code to use arrayList instead of arrays~~
 
 6. Look at CommandArrays and how they implement List
+
+7. Add ability to add comments
