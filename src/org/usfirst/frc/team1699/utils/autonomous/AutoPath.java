@@ -13,7 +13,7 @@ public class AutoPath {
 	
 	private String path; //Stores the path a the text file containing auto script
 	private ArrayList<String> fileAsString; //Array list that hold the autoFile as an array of strings
-	private ArrayList<Command> cmds; //Holds a list of all commands in an array
+	private static ArrayList<Command> cmds; //Holds a list of all commands in an array
 	
 	/**
 	 * Constructor
