@@ -2,6 +2,7 @@
  * Class that generates a path for auto
  * 
  * @author squirlemaster42
+ * @author TheCookingCookie
  */
 package org.usfirst.frc.team1699.utils.autonomous;
 
