@@ -16,8 +16,8 @@ public abstract class Command {
 
 	private String name; //Holds command name
 	private int id; //Holds command id
-	private static Set<String> cmdNames = new HashSet<String>(); //Makes a new static instance of CommandNameArray
-	private static Set<Integer> cmdId = new HashSet<Integer>(); //Makes a new static instance of CommandIdArray
+	private static Set<String> cmdNames = new HashSet<String>(); //Makes a new static instance of Set that can only hold Strings
+	private static Set<Integer> cmdId = new HashSet<Integer>(); //Makes a new static instance of Set that can only hold Integers
 
 	/**
 	 * Constructor
@@ -25,7 +25,7 @@ public abstract class Command {
 	 * @param name
 	 * @param id
 	 */
-	public Command(String name, int id) { //Constructor, sets instance vars equal to input and adds command name and id to respective lists
+	public Command(String name, int id) { //Constructor, sets instance vars equal to input and adds command name and id to respective sets
 		this.name = name;
 		this.id = id;
 		
@@ -115,7 +115,7 @@ public abstract class Command {
 	}
 	
 	/**
-	 * Gets command name array
+	 * Gets command name set
 	 * 
 	 * @return
 	 */
@@ -124,7 +124,7 @@ public abstract class Command {
 	}
 	
 	/**
-	 * Gets command id array
+	 * Gets command id set
 	 * 
 	 * @return
 	 */
