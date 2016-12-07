@@ -1,6 +1,6 @@
 package org.usfirst.frc.team1699.utils.command;
 
-public interface Commandable {
+public interface Commandable{
 
 	/**
 	 * This method should contain initializers
