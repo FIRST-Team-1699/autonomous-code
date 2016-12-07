@@ -9,12 +9,15 @@
  */
 package org.usfirst.frc.team1699.utils.command;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public abstract class Command {
 
 	private String name; //Holds command name
 	private int id; //Holds command id
-	private static CommandNameArray cmdNames = new CommandNameArray(); //Makes a new static instance of CommandNameArray
-	private static CommandIdArray cmdId = new CommandIdArray(); //Makes a new static instance of CommandIdArray
+	private static Set<String> cmdNames = new HashSet<String>(); //Makes a new static instance of CommandNameArray
+	private static Set<Integer> cmdId = new HashSet<Integer>(); //Makes a new static instance of CommandIdArray
 
 	/**
 	 * Constructor
@@ -25,8 +28,18 @@ public abstract class Command {
 	public Command(String name, int id) { //Constructor, sets instance vars equal to input and adds command name and id to respective lists
 		this.name = name;
 		this.id = id;
-		cmdNames.addName(name);
-		cmdId.addId(id);
+		
+		if(cmdNames.add(name)){
+			cmdNames.add(name);
+		} else {
+			throw new NameUsedException();
+		}
+		
+		if(cmdId.add(id)){
+			cmdId.add(id);
+		} else {
+			throw new IdUsedException();
+		}
 	}
 
 	/**
@@ -106,7 +119,7 @@ public abstract class Command {
 	 * 
 	 * @return
 	 */
-	public static CommandNameArray getCmdNames(){ //Returns CommandNameArray
+	public static Set<String> getCmdNames(){ //Returns CommandNameArray
 		return cmdNames;
 	}
 	
@@ -115,7 +128,7 @@ public abstract class Command {
 	 * 
 	 * @return
 	 */
-	public static CommandIdArray getCmdId(){ //ReturnCommandIdArray
+	public static Set<Integer> getCmdId(){ //ReturnCommandIdArray
 		return cmdId;
 	}
 	

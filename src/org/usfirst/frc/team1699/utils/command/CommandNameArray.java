@@ -6,11 +6,8 @@
 package org.usfirst.frc.team1699.utils.command;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 
+@Deprecated
 public class CommandNameArray extends ArrayList{
 	
 	private ArrayList<String> list; //Hold list of names

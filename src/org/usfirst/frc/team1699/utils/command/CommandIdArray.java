@@ -6,11 +6,8 @@
 package org.usfirst.frc.team1699.utils.command;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 
+@Deprecated
 public class CommandIdArray extends ArrayList{
 	// Should store name and id and make sure that no id or name is a duplicate
 
