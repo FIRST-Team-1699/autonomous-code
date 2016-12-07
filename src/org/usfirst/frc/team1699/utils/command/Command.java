@@ -64,7 +64,7 @@ public abstract class Command implements AutoCommand, Commandable{
 	public abstract void runAuto(double distance, double speed, boolean useSensor); //Abstract method that should hold code that is supposed to be called during auto when the command is called
 	
 	/**
-	 * This method should contains code that returns if the auto command is done
+	 * This method should contain code that returns if the auto command is done
 	 * 
 	 * @return
 	 */
