@@ -12,7 +12,9 @@ package org.usfirst.frc.team1699.utils.command;
 import java.util.HashSet;
 import java.util.Set;
 
-public abstract class Command {
+import org.usfirst.frc.team1699.utils.autonomous.AutoCommand;
+
+public abstract class Command implements AutoCommand, Commandable{
 
 	private String name; //Holds command name
 	private int id; //Holds command id
