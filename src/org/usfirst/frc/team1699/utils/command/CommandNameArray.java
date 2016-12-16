@@ -7,9 +7,14 @@ package org.usfirst.frc.team1699.utils.command;
 
 import java.util.ArrayList;
 
+@SuppressWarnings("rawtypes")
 @Deprecated
 public class CommandNameArray extends ArrayList{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1620171781964495707L;
 	private ArrayList<String> list; //Hold list of names
 
 	/**

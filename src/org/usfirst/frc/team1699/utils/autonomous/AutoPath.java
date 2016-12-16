@@ -23,6 +23,7 @@ public class AutoPath {
 	 * @param numLines
 	 * @param cmds
 	 */
+	@SuppressWarnings("static-access")
 	public AutoPath(String path, ArrayList<Command> cmds){
 		//Sets instance vars to values input by programmer
 		this.path = path;

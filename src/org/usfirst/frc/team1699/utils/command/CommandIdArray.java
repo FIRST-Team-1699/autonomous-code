@@ -7,10 +7,15 @@ package org.usfirst.frc.team1699.utils.command;
 
 import java.util.ArrayList;
 
+@SuppressWarnings("rawtypes")
 @Deprecated
 public class CommandIdArray extends ArrayList{
 	// Should store name and id and make sure that no id or name is a duplicate
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -554037338204714323L;
 	private ArrayList<Integer> list; //Hold list of ids
 
 	/**
