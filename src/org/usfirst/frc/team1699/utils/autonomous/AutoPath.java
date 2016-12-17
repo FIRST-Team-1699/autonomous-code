@@ -57,7 +57,13 @@ public class AutoPath {
 			try{
 				System.out.println(fileAsString.get(i));
 				System.out.println(removeLineComments(fileAsString.get(i)));
-				callCommandFromString(fileAsString.get(i)); //sends string to method so it can be converted to an object
+				if(containsIfConditional(fileAsString.get(i))){
+					//Does conditional stuff
+				}else if(isCommand(fileAsString.get(i))){
+					callCommandFromString(fileAsString.get(i)); //sends string to method so it can be converted to an object
+				}else{
+					//Throw exception
+				}
 			}catch(CommandNotFoundException e){ //Detects if there is a error where the command is not found
 				System.out.println("Your autonomous script has failed because a command does not exist.");
 				e.printStackTrace();
@@ -164,10 +170,34 @@ public class AutoPath {
 		return 0.0;
 	}
 	
+	public static boolean isCommand(String string) {
+		String[] inp = string.split(" ");
+		for(int i = 0; i < inp.length; i++){
+			for(int j = 0; j < cmds.size(); j++){
+				if(cmds.get(j).getName().equals(inp[i])){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
 	public static void ifConditional(String[] cmdLine){
 		for(int i = 0; i < cmdLine.length; i++){
-			
+			if(cmdLine[i].equals("if")){
+				//Does stuff for if conditional
+			}
 		}
+	}
+	
+	public static boolean containsIfConditional(String string){
+		String[] inp = string.split(" ");
+		for(int i = 0; i < inp.length; i++){
+			if(inp[i].equals("if")){
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	/**
