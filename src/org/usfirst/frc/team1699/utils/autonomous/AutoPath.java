@@ -183,11 +183,17 @@ public class AutoPath {
 	}
 	
 	public static void ifConditional(String[] cmdLine){
+		String conditional;
+		int ifStart;
 		for(int i = 0; i < cmdLine.length; i++){
 			if(cmdLine[i].equals("if")){
-				//Does stuff for if conditional
+				conditional = cmdLine[i + 1];
+				ifStart = i;
+				break;
 			}
 		}
+		
+		ConditionalSymbol conditionalSymbol;
 	}
 	
 	public static boolean containsIfConditional(String string){
