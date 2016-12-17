@@ -82,7 +82,6 @@ public class AutoPath {
 		boolean useSensor = getUseSensor(cmdLine); //Makes a boolean called use sensor and set true if the auto file specifies that a sensor should be used
 		
 		((Command) cmd).runAuto(distance, speed, useSensor); //Cast the cmd object to type Command and runs the runAuto method in it
-		
 	}
 	
 	/**
