@@ -91,7 +91,7 @@ public class AutoPath {
 	 */
 	public static boolean getUseSensor(String[] cmdLine){
 		try{
-			for(int i = 0; i <= cmdLine.length; i++){ //This loops looks for the word until in the cmdLine array and returns true if it is found
+			for(int i = 0; i < cmdLine.length; i++){ //This loops looks for the word until in the cmdLine array and returns true if it is found
 				if(cmdLine[i].equals("until")){ 
 					return true;
 				}
@@ -135,7 +135,7 @@ public class AutoPath {
 	 */
 	public static double getDistance(String[] cmdLine){
 		try{
-			for(int i = 0; i <= cmdLine.length; i++){ //Loops through cmdLine array and looks at the value after until or for then returns that value
+			for(int i = 0; i < cmdLine.length; i++){ //Loops through cmdLine array and looks at the value after until or for then returns that value
 				if(((cmdLine[i].equals("until")) || cmdLine[i].equals("for")) && (i + 1 < cmdLine.length)){
 					double distance = AutoUtils.parseDouble(cmdLine[i + 1]);
 					return distance;
@@ -155,13 +155,19 @@ public class AutoPath {
 	 * @return
 	 */
 	public static double getSpeed(String[] cmdLine){
-		for(int j = 0; j <= cmdLine.length; j++){ //Loops through the cmdLine array and looks at the value after at then returns that value
+		for(int j = 0; j < cmdLine.length; j++){ //Loops through the cmdLine array and looks at the value after at then returns that value
 			if((cmdLine[j].equals("at")) && (j + 1 < cmdLine.length)){
 				double speed = AutoUtils.parseDouble(cmdLine[j + 1]);
 				return speed;
 			}
 		}
 		return 0.0;
+	}
+	
+	public static void ifConditional(String[] cmdLine){
+		for(int i = 0; i < cmdLine.length; i++){
+			
+		}
 	}
 	
 	/**
