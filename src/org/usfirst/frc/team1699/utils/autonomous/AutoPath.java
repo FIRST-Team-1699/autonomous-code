@@ -179,7 +179,7 @@ public class AutoPath {
 				newLine = line.substring(0, ch);
 			}
 		}
-	return newLine;
+		return newLine;
 	}
 	
 	/**
