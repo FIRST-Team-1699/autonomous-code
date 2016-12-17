@@ -55,10 +55,8 @@ public class AutoPath {
 	public void runScript(){
 		for(int i = 0; i < fileAsString.size(); i++){ //Loops through fileAsString array
 			try{
-				if(removeLineComments(fileAsString.get(i)).equals("")){
-					continue;
-				}
-				callCommandFromString(removeLineComments(fileAsString.get(i))); //sends string to method so it can be converted to an object
+				System.out.println(removeLineComments(fileAsString.get(i)));
+				callCommandFromString(fileAsString.get(i)); //sends string to method so it can be converted to an object
 			}catch(CommandNotFoundException e){ //Detects if there is a error where the command is not found
 				System.out.println("Your autonomous script has failed because a command does not exist.");
 				e.printStackTrace();
@@ -171,10 +169,10 @@ public class AutoPath {
 	 * @param line
 	 * @return newLine
 	 */
-	public String removeLineComments(String line) {
+	public static String removeLineComments(String line) {
 		String newLine = ""; //Makes a new version of the line without comments to be returned
 		if(line.substring(0, 1).equals("~") || line.substring(0, 2).equals("//")) { //Returns nothing if the entire line is a single-line comment
-			return "";
+			return newLine;
 		}
 		for(int ch = 0; ch < line.length() - 2; ch++) { //Loops through the string and finds the start of any line comments to be omitted
 			if ((line.substring(ch, ch + 1).equals("~")) || (line.substring(ch, ch + 2).equals("//"))) {

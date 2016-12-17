@@ -34,4 +34,13 @@ public class AutoTestMain {
 		String filePath = "autoTestFiles/test.nav";
 		System.out.println(AutoUtils.loadFileAsArray(filePath));
 	}
+	
+	@Test
+	public void commentTest(){
+		String test = "This is a line. //This should be gone";
+		String other = "This stays. ~This is gone.";
+		
+		System.out.println(AutoPath.removeLineComments(test));
+		System.out.println(AutoPath.removeLineComments(other));
+	}
 }
