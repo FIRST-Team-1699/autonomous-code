@@ -186,11 +186,23 @@ public class AutoPath {
 		String[] conLine = cmdLine[startLine].split(" ");
 		String runLine = cmdLine[startLine + 1];
 		String conditional = "";
+		int conditionalStart = 0;
+		int conditionalEnd = 0;
 		
 		for(int i = 0; i < conLine.length; i++){
 			 if(conLine[i].equals("if")){
-				 conditional = conLine[i + 1];
+				 conditionalStart = i + 1;
 			 }
+		}
+		
+		for(int i = 0; i < conLine.length; i++){
+			 if(conLine[i].equals("then:")){
+				 conditionalStart = i - 1;
+			 }
+		}
+		
+		for(int i = conditionalStart; i < conditionalEnd; i++){
+			conditional += conLine[i];
 		}
 		
 		return startLine + 2;
