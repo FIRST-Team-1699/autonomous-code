@@ -55,7 +55,10 @@ public class AutoPath {
 	public void runScript(){
 		for(int i = 0; i < fileAsString.size(); i++){ //Loops through fileAsString array
 			try{
-				callCommandFromString(fileAsString.get(i)); //sends string to method so it can be converted to an object
+				if(removeLineComments(fileAsString.get(i)).equals("")){
+					continue;
+				}
+				callCommandFromString(removeLineComments(fileAsString.get(i))); //sends string to method so it can be converted to an object
 			}catch(CommandNotFoundException e){ //Detects if there is a error where the command is not found
 				System.out.println("Your autonomous script has failed because a command does not exist.");
 				e.printStackTrace();
@@ -188,6 +191,7 @@ public class AutoPath {
 	 * @param line
 	 * @return newLine
 	 */
+	@Deprecated
 	public String removeMultiLineComments(String line) {
 		boolean isComment = false; //Holds a boolean to keep track of whether or not a character is part of a multi-line comment
 		String newLine = ""; //Makes a new version of the program as a string without multi-lined comments
