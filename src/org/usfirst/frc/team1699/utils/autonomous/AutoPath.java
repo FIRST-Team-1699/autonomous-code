@@ -182,18 +182,18 @@ public class AutoPath {
 		return false;
 	}
 	
-	public static void ifConditional(String[] cmdLine){
-		String conditional;
-		int ifStart;
-		for(int i = 0; i < cmdLine.length; i++){
-			if(cmdLine[i].equals("if")){
-				conditional = cmdLine[i + 1];
-				ifStart = i;
-				break;
-			}
+	public static int ifConditional(String[] cmdLine, int startLine){
+		String[] conLine = cmdLine[startLine].split(" ");
+		String runLine = cmdLine[startLine + 1];
+		String conditional = "";
+		
+		for(int i = 0; i < conLine.length; i++){
+			 if(conLine[i].equals("if")){
+				 conditional = conLine[i + 1];
+			 }
 		}
 		
-		ConditionalSymbol conditionalSymbol;
+		return startLine + 2;
 	}
 	
 	public static boolean containsIfConditional(String string){
