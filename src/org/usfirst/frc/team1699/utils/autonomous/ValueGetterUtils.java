@@ -12,7 +12,7 @@ public class ValueGetterUtils {
 	 * @param cmdLine
 	 * @return
 	 */
-	public static boolean getUseSensor(String[] cmdLine){https://www.youtube.com/watch?v=Lgw3D2KKqDQ
+	public static boolean getUseSensor(String[] cmdLine){
 		try{
 			for(int i = 0; i < cmdLine.length; i++){ //This loops looks for the word until in the cmdLine array and returns true if it is found
 				if(cmdLine[i].equals("until")){ 

@@ -57,9 +57,9 @@ public class AutoPath {
 			try{
 				System.out.println(fileAsString.get(i));
 				System.out.println(CommentUtils.removeLineComments(fileAsString.get(i)));
-				if(containsIfConditional(fileAsString.get(i))){
+				if(IfConditionalUtils.containsIfConditional(fileAsString.get(i))){
 					//Does conditional stuff
-				}else if(isCommand(fileAsString.get(i))){
+				}else if(IfConditionalUtils.isCommand(fileAsString.get(i), cmds)){
 					callCommandFromString(fileAsString.get(i)); //sends string to method so it can be converted to an object
 				}else{
 					//Throw exception
@@ -87,54 +87,6 @@ public class AutoPath {
 		boolean useSensor = ValueGetterUtils.getUseSensor(cmdLine); //Makes a boolean called use sensor and set true if the auto file specifies that a sensor should be used
 		
 		((Command) cmd).runAuto(distance, speed, useSensor); //Cast the cmd object to type Command and runs the runAuto method in it
-	}
-	
-	public static boolean isCommand(String string) {
-		String[] inp = string.split(" ");
-		for(int i = 0; i < inp.length; i++){
-			for(int j = 0; j < cmds.size(); j++){
-				if(cmds.get(j).getName().equals(inp[i])){
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-	
-	public static int ifConditional(String[] cmdLine, int startLine){
-		String[] conLine = cmdLine[startLine].split(" ");
-		String runLine = cmdLine[startLine + 1];
-		String conditional = "";
-		int conditionalStart = 0;
-		int conditionalEnd = 0;
-		
-		for(int i = 0; i < conLine.length; i++){
-			 if(conLine[i].equals("if")){
-				 conditionalStart = i + 1;
-			 }
-		}
-		
-		for(int i = 0; i < conLine.length; i++){
-			 if(conLine[i].equals("then:")){
-				 conditionalStart = i - 1;
-			 }
-		}
-		
-		for(int i = conditionalStart; i < conditionalEnd; i++){
-			conditional += conLine[i];
-		}
-		
-		return startLine + 2;
-	}
-	
-	public static boolean containsIfConditional(String string){
-		String[] inp = string.split(" ");
-		for(int i = 0; i < inp.length; i++){
-			if(inp[i].equals("if")){
-				return true;
-			}
-		}
-		return false;
 	}
 	
 }
