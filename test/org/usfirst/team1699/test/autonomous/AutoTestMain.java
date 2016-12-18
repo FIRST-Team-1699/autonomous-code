@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.junit.Test;
 import org.usfirst.frc.team1699.utils.autonomous.AutoPath;
 import org.usfirst.frc.team1699.utils.autonomous.AutoUtils;
+import org.usfirst.frc.team1699.utils.autonomous.CommentUtils;
 import org.usfirst.frc.team1699.utils.command.Command;
 import org.usfirst.team1699.test.autonomous.commands.Drive;
 import org.usfirst.team1699.test.autonomous.commands.Shoot;
@@ -40,7 +41,7 @@ public class AutoTestMain {
 		String test = "This is a line. //This should be gone";
 		String other = "This stays. ~This is gone.";
 		
-		System.out.println(AutoPath.removeLineComments(test));
-		System.out.println(AutoPath.removeLineComments(other));
+		System.out.println(CommentUtils.removeLineComments(test));
+		System.out.println(CommentUtils.removeLineComments(other));
 	}
 }
