@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import org.usfirst.frc.team1699.utils.command.Command;
 
-public class AutoPath {
+public class AutoScriptReader {
 	
 	private String path; //Stores the path a the text file containing auto script
 	private ArrayList<String> fileAsString; //Array list that hold the autoFile as an array of strings
@@ -24,7 +24,7 @@ public class AutoPath {
 	 * @param cmds
 	 */
 	@SuppressWarnings("static-access")
-	public AutoPath(String path, ArrayList<Command> cmds){
+	public AutoScriptReader(String path, ArrayList<Command> cmds){
 		//Sets instance vars to values input by programmer
 		this.path = path;
 		this.cmds = cmds;
@@ -79,7 +79,7 @@ public class AutoPath {
 	 * @param inp
 	 * @throws CommandNotFoundException
 	 */
-	public static void callCommandFromString(String inp){
+	public void callCommandFromString(String inp){
 		String[] cmdLine = inp.split(" "); //Creates a string array and sets it equal to the input string split at spaces
 		double speed = ValueGetterUtils.getSpeed(cmdLine); //Makes a double called speed and set it equal to the speed specified in the auto file
 		double distance = ValueGetterUtils.getDistance(cmdLine); //Makes a double called distance and set it equal to the distance specified in the auto file

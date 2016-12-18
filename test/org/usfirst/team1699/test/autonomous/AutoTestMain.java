@@ -3,7 +3,7 @@ package org.usfirst.team1699.test.autonomous;
 import java.util.ArrayList;
 
 import org.junit.Test;
-import org.usfirst.frc.team1699.utils.autonomous.AutoPath;
+import org.usfirst.frc.team1699.utils.autonomous.AutoScriptReader;
 import org.usfirst.frc.team1699.utils.autonomous.AutoUtils;
 import org.usfirst.frc.team1699.utils.autonomous.CommentUtils;
 import org.usfirst.frc.team1699.utils.command.Command;
@@ -26,7 +26,7 @@ public class AutoTestMain {
 		cmd.add(t);
 		cmd.add(s);
 		
-		AutoPath path = new AutoPath(filePath, cmd);
+		AutoScriptReader path = new AutoScriptReader(filePath, cmd);
 		path.runScript();
 	}
 	
