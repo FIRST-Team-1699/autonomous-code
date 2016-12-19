@@ -66,6 +66,15 @@ public class IfConditionalUtils {
 		return false;
 	}
 	
+	public static String getConditional(String conditional){	
+		for(String x: validConditionalSymbols){
+			if(x.equals(conditional)){
+				return x;
+			}
+		}
+		return null;
+	}
+	
 	public static boolean containsIfConditional(String string){
 		String[] inp = string.split(" ");
 		for(int i = 0; i < inp.length; i++){
