@@ -62,7 +62,7 @@ public class AutoScriptReader {
 				}else if(IfConditionalUtils.isCommand(fileAsString.get(i), cmds)){
 					callCommandFromString(fileAsString.get(i)); //sends string to method so it can be converted to an object
 				}else{
-					//Throw exception
+					throw new InvalidLineException();
 				}
 			}catch(CommandNotFoundException e){ //Detects if there is a error where the command is not found
 				System.out.println("Your autonomous script has failed because a command does not exist.");
