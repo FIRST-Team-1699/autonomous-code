@@ -79,7 +79,7 @@ public class AutoScriptReader {
 	 * @param inp
 	 * @throws CommandNotFoundException
 	 */
-	public void callCommandFromString(String inp){
+	private void callCommandFromString(String inp){
 		String[] cmdLine = inp.split(" "); //Creates a string array and sets it equal to the input string split at spaces
 		double speed = ValueGetterUtils.getSpeed(cmdLine); //Makes a double called speed and set it equal to the speed specified in the auto file
 		double distance = ValueGetterUtils.getDistance(cmdLine); //Makes a double called distance and set it equal to the distance specified in the auto file
