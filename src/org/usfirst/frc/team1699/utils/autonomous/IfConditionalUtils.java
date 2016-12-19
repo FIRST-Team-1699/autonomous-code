@@ -47,12 +47,15 @@ public class IfConditionalUtils {
 	
 	public static boolean evaluateConditional(String conditional){
 		String firstStatement = "";
-		String secondStatment = "";
+		String secondStatement = "";
 		String conditionalSymbol  = "";
 		
 		for(int i = 0; i < conditional.length(); i++){
 			if(isConditional(conditional.substring(i, i + 1))){
-				
+				firstStatement = conditional.substring(0, i);
+				secondStatement = conditional.substring(i + 1);
+				conditionalSymbol = getConditional(conditional);
+				break;
 			}
 		}
 		
