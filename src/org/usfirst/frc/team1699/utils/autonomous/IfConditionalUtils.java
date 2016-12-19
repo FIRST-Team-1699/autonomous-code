@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.usfirst.frc.team1699.utils.command.Command;
 
 public class IfConditionalUtils {
+	private static final String[] validConditionalSymbols = {"<", ">", "==", "<=", ">="};
 	
 	public static boolean isCommand(String string, ArrayList<Command> cmds) {
 		String[] inp = string.split(" ");
@@ -18,7 +19,7 @@ public class IfConditionalUtils {
 		return false;
 	}
 	
-	public static int ifConditional(String[] cmdLine, int startLine){
+	public static boolean ifConditional(String[] cmdLine, int startLine){
 		String[] conLine = cmdLine[startLine].split(" ");
 		String runLine = cmdLine[startLine + 1];
 		String conditional = "";
@@ -41,7 +42,28 @@ public class IfConditionalUtils {
 			conditional += conLine[i];
 		}
 		
-		return startLine + 2;
+		return evaluateConditional(conditional);
+	}
+	
+	public static boolean evaluateConditional(String conditional){
+		String firstStatement = "";
+		String secondStatment = "";
+		String conditionalSymbol  = "";
+		
+		for(int i = 0; i < conditional.length(); i++){
+			if(isConditional(conditional.substring(i, i + 1))){
+				
+			}
+		}
+		
+		return true;
+	}
+	
+	public static boolean isConditional(String conditional){	
+		for(String x: validConditionalSymbols){
+			return x.equals(conditional);
+		}
+		return false;
 	}
 	
 	public static boolean containsIfConditional(String string){
