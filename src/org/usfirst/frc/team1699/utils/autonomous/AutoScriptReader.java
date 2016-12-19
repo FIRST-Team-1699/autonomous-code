@@ -21,7 +21,7 @@ public class AutoScriptReader {
 	 * 
 	 * @param path
 	 * @param numLines
-	 * @param cmds4
+	 * @param cmds
 	 */
 	@SuppressWarnings("static-access")
 	public AutoScriptReader(String path, ArrayList<Command> cmds){
