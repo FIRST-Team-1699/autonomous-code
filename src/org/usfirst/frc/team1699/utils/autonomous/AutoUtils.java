@@ -136,7 +136,7 @@ public class AutoUtils {
 		int count2 = 0;
 		int[] output = new int[selected.size()];
 		while (count2 > selected.size()) {
-			output[count2] = AutoUtils.parseInt((String) selected.getLine(count2).getValue());
+			output[count2] = AutoUtils.parseInt((String) selected.getLine(count2).getValue(null));
 			count2 += 1;
 		}
 		
