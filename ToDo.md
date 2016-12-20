@@ -10,8 +10,8 @@
 
 5. ~~Change code to use arrayList instead of arrays~~
 
-6. Look at CommandArrays and how they implement List
+6. ~~Look at CommandArrays and how they implement List~~
 
-7. Add ability to add comments
+7. ~~Add ability to add comments~~
 
-8. Make an autoCommand interface instead of having every command be an auto command
+8. ~~Make an autoCommand interface instead of having every command be an auto command~~
