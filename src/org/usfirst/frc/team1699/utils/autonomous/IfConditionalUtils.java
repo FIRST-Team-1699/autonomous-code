@@ -61,7 +61,26 @@ public class IfConditionalUtils {
 			}
 		}
 		
-		return true;
+		Object firstStatmentObject = parseStringToObject(firstStatement);
+		Object secondStatmentObject = parseStringToObject(secondStatement);
+		
+		if((firstStatmentObject instanceof Integer && secondStatmentObject instanceof Integer) || (firstStatmentObject instanceof Double && secondStatmentObject instanceof Double)){
+			return true;
+		}else{
+			return firstStatmentObject.equals(secondStatmentObject);
+		}
+	}
+	
+	public static Object parseStringToObject(String str){
+		try {
+			return Integer.parseInt(str);
+		} catch (NumberFormatException e) {
+			try {
+				return Double.parseDouble(str);
+			} catch (NumberFormatException e1) {
+				return str;
+			}
+		}
 	}
 	
 	public static int getNextLine(){
