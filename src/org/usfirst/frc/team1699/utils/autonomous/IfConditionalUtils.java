@@ -20,7 +20,7 @@ public class IfConditionalUtils {
 		return false;
 	}
 	
-	public static boolean ifConditional(ArrayList<String> fileAsString, int startLine, AutoScriptReader reader){
+	public static boolean ifConditional(ArrayList<String> fileAsString, int startLine, Tokenizer reader){
 		String[] conLine = fileAsString.get(startLine).split(" ");
 		String runLine = fileAsString.get(startLine + 1);
 		String conditional = "";
@@ -35,24 +35,25 @@ public class IfConditionalUtils {
 		
 		for(int i = 0; i < conLine.length; i++){
 			 if(conLine[i].equals("then:")){
-				 conditionalStart = i - 1;
+				 conditionalEnd = i;
 			 }
 		}
 		
 		for(int i = conditionalStart; i < conditionalEnd; i++){
-			conditional += conLine[i];
+			conditional += conLine[i] + " ";
 		}
 		
-		System.out.println("Here");
+		System.out.println(conditional);
 		return evaluateConditional(conditional, reader);
 	}
 	
-	public static boolean evaluateConditional(String conditional, AutoScriptReader reader){
+	public static boolean evaluateConditional(String conditional, Tokenizer reader){
 		String firstStatement = "";
 		String secondStatement = "";
 		String conditionalSymbol  = "";
+		Type firstType;
+		Type secondType;
 		
-		System.out.println("Here");
 		for(int i = 0; i < conditional.length(); i++){
 			if(isConditional(conditional.substring(i, i + 1))){
 				firstStatement = conditional.substring(0, i);
@@ -62,40 +63,35 @@ public class IfConditionalUtils {
 			}
 		}
 		
-		System.out.println("Here");
-		Object firstStatmentObject = parseStringToObject(firstStatement);
-		Object secondStatmentObject = parseStringToObject(secondStatement);
+		firstType = getType(firstStatement);
+		secondType = getType(secondStatement);
 		
-		//Issue is here and with parsing. Will be fixed soon.
-		if((firstStatmentObject instanceof Integer && secondStatmentObject instanceof Integer) || (firstStatmentObject instanceof Double && secondStatmentObject instanceof Double) || (firstStatmentObject instanceof Integer && secondStatmentObject instanceof Double) || (firstStatmentObject instanceof Double && secondStatmentObject instanceof Integer)){
-			Token tok = reader.getTokenizer().getTokens().get(0);
-			System.out.println("Here");
+		if((firstType.equals(Type.DOUBLE) || firstType.equals(Type.INTEGER)) && (secondType.equals(Type.DOUBLE) || secondType.equals(Type.INTEGER))){
+			Token tok = reader.getTokens().get(0);
 			switch(tok.token){
-				case 0: return (int) firstStatmentObject < (int) secondStatmentObject;
-				case 1: return (int) firstStatmentObject > (int) secondStatmentObject;
-				case 2: return (int) firstStatmentObject <= (int) secondStatmentObject;
-				case 3: return (int) firstStatmentObject >= (int) secondStatmentObject;
-				case 4: return (int) firstStatmentObject == (int) secondStatmentObject;
-				case 5: return (int) firstStatmentObject != (int) secondStatmentObject;
+				case 0: return AutoUtils.parseDouble(firstStatement) < AutoUtils.parseDouble(secondStatement);
+				case 1: return AutoUtils.parseDouble(firstStatement) > AutoUtils.parseDouble(secondStatement);
+				case 2: return AutoUtils.parseDouble(firstStatement) <= AutoUtils.parseDouble(secondStatement);
+				case 3: return AutoUtils.parseDouble(firstStatement) >= AutoUtils.parseDouble(secondStatement);
+				case 4: return AutoUtils.parseDouble(firstStatement) == AutoUtils.parseDouble(secondStatement);
+				case 5: return AutoUtils.parseDouble(firstStatement) != AutoUtils.parseDouble(secondStatement);
 				default: return false;
 			}
-		}else if(firstStatmentObject instanceof String && secondStatmentObject instanceof String){
-			System.out.println("Here 2");
-			return firstStatmentObject.equals(secondStatmentObject);
+		}else if(firstType.equals(Type.STRING) && secondType.equals(Type.STRING)){
+			System.out.println("Here");
+			return firstStatement.equals(secondStatement);
 		}else{
 			return false;
 		}
 	}
 	
-	public static Object parseStringToObject(String str){
-		try {
-			return Integer.parseInt(str);
-		} catch (NumberFormatException e) {
-			try {
-				return Double.parseDouble(str);
-			} catch (NumberFormatException e1) {
-				return str;
-			}
+	public static Type getType(String str){
+		if((!str.contains(".") && (!str.contains("\"")))){
+			return Type.INTEGER;
+		}else if((str.contains(".")) && (!str.contains("\""))){
+			return Type.DOUBLE;
+		}else{
+			return Type.STRING;
 		}
 	}
 	

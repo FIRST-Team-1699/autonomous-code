@@ -30,6 +30,7 @@ public class AutoScriptReader {
 		this.path = path;
 		this.cmds = cmds;
 		fileAsString = AutoUtils.loadFileAsArray(path); //Sets fileAsArray list equal to the file
+		System.out.println("Start");
 		tokenizer = new Tokenizer();
 		tokenizer.add("<", 0);
 		tokenizer.add(">", 1);
@@ -37,6 +38,7 @@ public class AutoScriptReader {
 		tokenizer.add(">=", 3);
 		tokenizer.add("==", 4);
 		tokenizer.add("!=", 5);
+		System.out.println("Ran");
 	}
 	
 	/**
@@ -68,7 +70,7 @@ public class AutoScriptReader {
 		for(int i = 0; i < fileAsString.size(); i++){ //Loops through fileAsString array
 			try{
 				if(IfConditionalUtils.containsIfConditional(fileAsString.get(i))){
-					if(IfConditionalUtils.ifConditional(fileAsString, i, this)){
+					if(IfConditionalUtils.ifConditional(fileAsString, i, tokenizer)){
 						for(int j = i + 1; j < IfConditionalUtils.getIfLength(fileAsString, i) + i; j++){
 							callCommandFromString(fileAsString.get(j));
 						}
