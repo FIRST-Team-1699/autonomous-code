@@ -58,7 +58,7 @@ public class AutoTestMain {
 		tokenizer.add("!=", 5);
 		
 		try{
-			tokenizer.tokenize("==");
+			tokenizer.tokenize("==  < > !=");
 			
 			for(Tokenizer.Token tok : tokenizer.getTokens()){
 				System.out.println(tok.token + "	" + tok.sequence);
