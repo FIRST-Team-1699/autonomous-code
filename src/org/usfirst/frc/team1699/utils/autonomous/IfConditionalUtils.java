@@ -47,7 +47,7 @@ public class IfConditionalUtils {
 		return evaluateConditional(conditional, reader);
 	}
 	
-	public static boolean evaluateConditional(String conditional, Tokenizer reader){
+	public static boolean evaluateConditional(String conditional, Tokenizer tokenizer){
 		String firstStatement = "";
 		String secondStatement = "";
 		String conditionalSymbol  = "";
@@ -63,11 +63,17 @@ public class IfConditionalUtils {
 			}
 		}
 		
+		System.out.println(firstStatement);
+		System.out.println(secondStatement);
+		System.out.println(conditionalSymbol);
+		
 		firstType = getType(firstStatement);
 		secondType = getType(secondStatement);
 		
 		if((firstType.equals(Type.DOUBLE) || firstType.equals(Type.INTEGER)) && (secondType.equals(Type.DOUBLE) || secondType.equals(Type.INTEGER))){
-			Token tok = reader.getTokens().get(0);
+			tokenizer.tokenize(conditionalSymbol);
+			Token tok = tokenizer.getTokens().get(0);
+			System.out.println("here");
 			switch(tok.token){
 				case 0: return AutoUtils.parseDouble(firstStatement) < AutoUtils.parseDouble(secondStatement);
 				case 1: return AutoUtils.parseDouble(firstStatement) > AutoUtils.parseDouble(secondStatement);

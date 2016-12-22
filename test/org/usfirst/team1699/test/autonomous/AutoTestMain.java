@@ -29,6 +29,7 @@ public class AutoTestMain {
 		cmd.add(s);
 		
 		AutoScriptReader path = new AutoScriptReader(filePath, cmd);
+		
 		path.runScript();
 	}
 	
