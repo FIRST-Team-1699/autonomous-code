@@ -7,7 +7,6 @@ import org.usfirst.frc.team1699.utils.command.Command;
 
 public class IfConditionalUtils {
 	private static final String[] validConditionalSymbols = {"<", ">", "==", "<=", ">="};
-	private static int nextLine = 0; //Needs implementation
 	
 	public static boolean isCommand(String string, ArrayList<Command> cmds) {
 		String[] inp = string.split(" ");
@@ -94,8 +93,13 @@ public class IfConditionalUtils {
 		}
 	}
 	
-	public static int getNextLine(){
-		return nextLine;
+	public static int getIfLength(ArrayList<String> strArr, int currentLine){
+		for(int i = currentLine; i < strArr.size(); i++){
+			if(strArr.get(i).trim().equals("end")){
+				return i;
+			}
+		}
+		return 0;
 	}
 	
 	public static boolean isConditional(String conditional){	

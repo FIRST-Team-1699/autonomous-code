@@ -73,7 +73,7 @@ public class AutoScriptReader {
 					if(IfConditionalUtils.ifConditional((String[]) fileAsString.toArray(), i, this)){
 						callCommandFromString(fileAsString.get(i));
 					}
-					i = IfConditionalUtils.getNextLine();
+					i += IfConditionalUtils.getIfLength(fileAsString, i);
 				}else if(IfConditionalUtils.isCommand(fileAsString.get(i), cmds)){
 					callCommandFromString(fileAsString.get(i)); //sends string to method so it can be converted to an object
 				}else{
