@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.usfirst.frc.team1699.utils.inireader.ConfigFile;
+import org.usfirst.frc.team1699.utils.inireader.ConfigLine;
 import org.usfirst.frc.team1699.utils.inireader.ConfigSection;
 
 public class AutoUtils {
@@ -97,49 +98,23 @@ public class AutoUtils {
 	 * @param mode
 	 * @return
 	 */
-	@SuppressWarnings("null")
-	@Deprecated
-	//Needs to be changed to return an arrayList
-	public static int[] loadFileAsArray(ConfigFile file, int mode) { //Takes a ConfigFile and return it as an array of ints
+	public static ArrayList<String> loadFileAsArray(ConfigSection section) { //Takes a ConfigFile and return it as an array of ints
+		// Make the output list
+		ArrayList<String> out = new ArrayList<>();
 		
-		@SuppressWarnings("unused")
-		ArrayList<ConfigSection> sections = new ArrayList<>();
-		
-		// find a ConfigSection that has the text "autonomous" and mode in the name
-		int count1 = 0;
-		ConfigSection cs = null;
-		ConfigSection selected = null;
-		String name;
-		while (true) {
-			cs = file.getSection(count1);
-			
-			if (cs == null) {
-				break;
+		// Run through all the values in the list until null is hit
+		int i = 0;
+		ConfigLine<?> cl;
+		while ((cl = section.getLine(i)) != null) {
+			// Check that the ConfigLine is a String
+			if (cl.getClass().equals(String.class)) {
+				out.add((String) cl.getValue(String.class));
 			}
-			
-			name = cs.getName().toLowerCase();
-			
-			if ((name.contains("autonomous")) && (name.contains(((Integer) mode).toString()))) {
-				selected = cs;
-			}
-			count1 += 1;
+			// Iterate
+			i += 1;
 		}
 		
-		count1 = (Integer) null; //safety because i'm tired
-		
-		// not found state
-		if (selected == null) {
-			return new int[0]; 
-		}
-		
-		// generate commands
-		int count2 = 0;
-		int[] output = new int[selected.size()];
-		while (count2 > selected.size()) {
-			output[count2] = AutoUtils.parseInt((String) selected.getLine(count2).getValue(null));
-			count2 += 1;
-		}
-		
-		return output;
+		// Return the output
+		return out;
 	}
 }
