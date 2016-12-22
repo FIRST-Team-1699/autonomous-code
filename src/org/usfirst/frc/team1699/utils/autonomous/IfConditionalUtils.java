@@ -2,6 +2,7 @@ package org.usfirst.frc.team1699.utils.autonomous;
 
 import java.util.ArrayList;
 
+import org.usfirst.frc.team1699.utils.autonomous.Tokenizer.Token;
 import org.usfirst.frc.team1699.utils.command.Command;
 
 public class IfConditionalUtils {
@@ -20,7 +21,7 @@ public class IfConditionalUtils {
 		return false;
 	}
 	
-	public static boolean ifConditional(String[] cmdLine, int startLine){
+	public static boolean ifConditional(String[] cmdLine, int startLine, AutoScriptReader reader){
 		String[] conLine = cmdLine[startLine].split(" ");
 		String runLine = cmdLine[startLine + 1];
 		String conditional = "";
@@ -43,10 +44,10 @@ public class IfConditionalUtils {
 			conditional += conLine[i];
 		}
 		
-		return evaluateConditional(conditional);
+		return evaluateConditional(conditional, reader);
 	}
 	
-	public static boolean evaluateConditional(String conditional){
+	public static boolean evaluateConditional(String conditional, AutoScriptReader reader){
 		String firstStatement = "";
 		String secondStatement = "";
 		String conditionalSymbol  = "";
@@ -64,10 +65,21 @@ public class IfConditionalUtils {
 		Object firstStatmentObject = parseStringToObject(firstStatement);
 		Object secondStatmentObject = parseStringToObject(secondStatement);
 		
-		if((firstStatmentObject instanceof Integer && secondStatmentObject instanceof Integer) || (firstStatmentObject instanceof Double && secondStatmentObject instanceof Double)){
-			return true;
-		}else{
+		if((firstStatmentObject instanceof Integer && secondStatmentObject instanceof Integer) || (firstStatmentObject instanceof Double && secondStatmentObject instanceof Double) || (firstStatmentObject instanceof Integer && secondStatmentObject instanceof Double) || (firstStatmentObject instanceof Double && secondStatmentObject instanceof Integer)){
+			Token tok = reader.getTokenizer().getTokens().get(0);
+			switch(tok.token){
+				case 0: return (int) firstStatmentObject < (int) secondStatmentObject;
+				case 1: return (int) firstStatmentObject > (int) secondStatmentObject;
+				case 2: return (int) firstStatmentObject <= (int) secondStatmentObject;
+				case 3: return (int) firstStatmentObject >= (int) secondStatmentObject;
+				case 4: return (int) firstStatmentObject == (int) secondStatmentObject;
+				case 5: return (int) firstStatmentObject != (int) secondStatmentObject;
+				default: return false;
+			}
+		}else if(firstStatmentObject instanceof String && secondStatmentObject instanceof String){
 			return firstStatmentObject.equals(secondStatmentObject);
+		}else{
+			return false;
 		}
 	}
 	

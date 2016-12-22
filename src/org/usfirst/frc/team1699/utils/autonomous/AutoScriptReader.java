@@ -15,6 +15,7 @@ public class AutoScriptReader {
 	private String path; //Stores the path a the text file containing auto script
 	private ArrayList<String> fileAsString; //Array list that hold the autoFile as an array of strings
 	private static ArrayList<Command> cmds; //Holds a list of all commands in an array
+	private Tokenizer tokenizer;
 	
 	/**
 	 * Constructor
@@ -29,6 +30,13 @@ public class AutoScriptReader {
 		this.path = path;
 		this.cmds = cmds;
 		fileAsString = AutoUtils.loadFileAsArray(path); //Sets fileAsArray list equal to the file
+		tokenizer = new Tokenizer();
+		tokenizer.add("<", 0);
+		tokenizer.add(">", 1);
+		tokenizer.add("<=", 2);
+		tokenizer.add(">=", 3);
+		tokenizer.add("==", 4);
+		tokenizer.add("!=", 5);
 	}
 	
 	/**
@@ -47,6 +55,10 @@ public class AutoScriptReader {
 	 */
 	public ArrayList<String> getFileAsString() { //Returns the ArrayList of the file as a string
 		return fileAsString;
+	}
+	
+	public Tokenizer getTokenizer(){
+		return this.tokenizer;
 	}
 	
 	/**
