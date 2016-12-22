@@ -67,11 +67,11 @@ public class AutoScriptReader {
 	public void runScript(){
 		for(int i = 0; i < fileAsString.size(); i++){ //Loops through fileAsString array
 			try{
-				System.out.println(fileAsString.get(i));
-				System.out.println(CommentUtils.removeLineComments(fileAsString.get(i)));
 				if(IfConditionalUtils.containsIfConditional(fileAsString.get(i))){
-					if(IfConditionalUtils.ifConditional((String[]) fileAsString.toArray(), i, this)){
-						callCommandFromString(fileAsString.get(i));
+					if(IfConditionalUtils.ifConditional(fileAsString, i, this)){
+						for(int j = i + 1; j < IfConditionalUtils.getIfLength(fileAsString, i) + i; j++){
+							callCommandFromString(fileAsString.get(j));
+						}
 					}
 					i += IfConditionalUtils.getIfLength(fileAsString, i);
 				}else if(IfConditionalUtils.isCommand(fileAsString.get(i), cmds)){

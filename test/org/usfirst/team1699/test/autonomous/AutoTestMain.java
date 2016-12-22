@@ -32,13 +32,13 @@ public class AutoTestMain {
 		path.runScript();
 	}
 	
-	@Test
+	//@Test
 	public void arrayListFileTest(){
 		String filePath = "autoTestFiles/test.nav";
 		System.out.println(AutoUtils.loadFileAsArray(filePath));
 	}
 	
-	@Test
+	//@Test
 	public void commentTest(){
 		String test = "This is a line. //This should be gone";
 		String other = "This stays. ~This is gone.";
@@ -47,7 +47,7 @@ public class AutoTestMain {
 		System.out.println(CommentUtils.removeLineComments(other));
 	}
 	
-	@Test
+	//@Test
 	public void tokenizerTest(){
 		Tokenizer tokenizer = new Tokenizer();
 		tokenizer.add("<", 0);

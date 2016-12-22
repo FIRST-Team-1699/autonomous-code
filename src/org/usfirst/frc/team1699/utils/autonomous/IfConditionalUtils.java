@@ -20,9 +20,9 @@ public class IfConditionalUtils {
 		return false;
 	}
 	
-	public static boolean ifConditional(String[] cmdLine, int startLine, AutoScriptReader reader){
-		String[] conLine = cmdLine[startLine].split(" ");
-		String runLine = cmdLine[startLine + 1];
+	public static boolean ifConditional(ArrayList<String> fileAsString, int startLine, AutoScriptReader reader){
+		String[] conLine = fileAsString.get(startLine).split(" ");
+		String runLine = fileAsString.get(startLine + 1);
 		String conditional = "";
 		int conditionalStart = 0;
 		int conditionalEnd = 0;
@@ -43,6 +43,7 @@ public class IfConditionalUtils {
 			conditional += conLine[i];
 		}
 		
+		System.out.println("Here");
 		return evaluateConditional(conditional, reader);
 	}
 	
@@ -51,6 +52,7 @@ public class IfConditionalUtils {
 		String secondStatement = "";
 		String conditionalSymbol  = "";
 		
+		System.out.println("Here");
 		for(int i = 0; i < conditional.length(); i++){
 			if(isConditional(conditional.substring(i, i + 1))){
 				firstStatement = conditional.substring(0, i);
@@ -60,11 +62,14 @@ public class IfConditionalUtils {
 			}
 		}
 		
+		System.out.println("Here");
 		Object firstStatmentObject = parseStringToObject(firstStatement);
 		Object secondStatmentObject = parseStringToObject(secondStatement);
 		
+		//Issue is here and with parsing. Will be fixed soon.
 		if((firstStatmentObject instanceof Integer && secondStatmentObject instanceof Integer) || (firstStatmentObject instanceof Double && secondStatmentObject instanceof Double) || (firstStatmentObject instanceof Integer && secondStatmentObject instanceof Double) || (firstStatmentObject instanceof Double && secondStatmentObject instanceof Integer)){
 			Token tok = reader.getTokenizer().getTokens().get(0);
+			System.out.println("Here");
 			switch(tok.token){
 				case 0: return (int) firstStatmentObject < (int) secondStatmentObject;
 				case 1: return (int) firstStatmentObject > (int) secondStatmentObject;
@@ -75,6 +80,7 @@ public class IfConditionalUtils {
 				default: return false;
 			}
 		}else if(firstStatmentObject instanceof String && secondStatmentObject instanceof String){
+			System.out.println("Here 2");
 			return firstStatmentObject.equals(secondStatmentObject);
 		}else{
 			return false;
@@ -96,7 +102,7 @@ public class IfConditionalUtils {
 	public static int getIfLength(ArrayList<String> strArr, int currentLine){
 		for(int i = currentLine; i < strArr.size(); i++){
 			if(strArr.get(i).trim().equals("end")){
-				return i;
+				return i - currentLine;
 			}
 		}
 		return 0;
