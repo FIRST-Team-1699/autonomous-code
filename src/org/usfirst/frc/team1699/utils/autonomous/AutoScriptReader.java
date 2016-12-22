@@ -70,7 +70,10 @@ public class AutoScriptReader {
 				System.out.println(fileAsString.get(i));
 				System.out.println(CommentUtils.removeLineComments(fileAsString.get(i)));
 				if(IfConditionalUtils.containsIfConditional(fileAsString.get(i))){
-					//Does conditional stuff
+					if(IfConditionalUtils.ifConditional((String[]) fileAsString.toArray(), i, this)){
+						callCommandFromString(fileAsString.get(i));
+					}
+					i = IfConditionalUtils.getNextLine();
 				}else if(IfConditionalUtils.isCommand(fileAsString.get(i), cmds)){
 					callCommandFromString(fileAsString.get(i)); //sends string to method so it can be converted to an object
 				}else{
