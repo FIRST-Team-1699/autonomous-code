@@ -8,8 +8,14 @@ import org.usfirst.frc.team1699.utils.command.Command;
 public class IfConditionalUtils {
 	private static final String[] validConditionalSymbols = {"<", ">", "==", "<=", ">="}; //Stores valid conditional symbols
 	
-	
-	
+	/**
+	 * Returns true if string is a conditional
+	 * 
+	 * @param fileAsString
+	 * @param startLine
+	 * @param reader
+	 * @return
+	 */
 	public static boolean ifConditional(ArrayList<String> fileAsString, int startLine, Tokenizer reader){
 		String[] conLine = fileAsString.get(startLine).split(" ");
 		String conditional = "";
@@ -35,6 +41,13 @@ public class IfConditionalUtils {
 		return evaluateConditional(conditional, reader);
 	}
 	
+	/**
+	 * Returns true if conditional string evaluates to true
+	 * 
+	 * @param conditional
+	 * @param tokenizer
+	 * @return
+	 */
 	public static boolean evaluateConditional(String conditional, Tokenizer tokenizer){
 		String firstStatement = "";
 		String secondStatement = "";
@@ -76,6 +89,12 @@ public class IfConditionalUtils {
 		}
 	}
 	
+	/**
+	 * Gets Type of string
+	 * 
+	 * @param str
+	 * @return
+	 */
 	public static Type getType(String str){
 		if((!str.contains(".") && (!str.contains("\"")))){
 			return Type.INTEGER;
@@ -86,6 +105,13 @@ public class IfConditionalUtils {
 		}
 	}
 	
+	/**
+	 * Gets length of if
+	 * 
+	 * @param strArr
+	 * @param currentLine
+	 * @return
+	 */
 	public static int getIfLength(ArrayList<String> strArr, int currentLine){
 		for(int i = currentLine; i < strArr.size(); i++){
 			if(strArr.get(i).trim().equals("end")){
@@ -95,6 +121,12 @@ public class IfConditionalUtils {
 		return 0;
 	}
 	
+	/**
+	 * Returns true if string is a conditional symbol
+	 * 
+	 * @param conditional
+	 * @return
+	 */
 	public static boolean isConditional(String conditional){	
 		for(String x: validConditionalSymbols){
 			return x.equals(conditional);
@@ -102,6 +134,12 @@ public class IfConditionalUtils {
 		return false;
 	}
 	
+	/**
+	 * Returns conditional symbol from string
+	 * 
+	 * @param conditional
+	 * @return
+	 */
 	public static String getConditional(String conditional){	
 		for(String x: validConditionalSymbols){
 			if(x.equals(conditional)){
@@ -111,6 +149,12 @@ public class IfConditionalUtils {
 		return null;
 	}
 	
+	/**
+	 * Returns true if string contains a conditional
+	 * 
+	 * @param string
+	 * @return
+	 */
 	public static boolean containsIfConditional(String string){
 		String[] inp = string.split(" ");
 		for(int i = 0; i < inp.length; i++){
