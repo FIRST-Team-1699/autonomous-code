@@ -1,3 +1,8 @@
+/**
+ * Interface for AutoCommand
+ * 
+ * @author squirlemaster42
+ */
 package org.usfirst.frc.team1699.utils.autonomous;
 
 public interface AutoCommand{
