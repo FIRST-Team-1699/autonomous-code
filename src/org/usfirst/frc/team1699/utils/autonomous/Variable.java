@@ -1,6 +1,10 @@
+/**
+ * Will be used to store variables created in auto script
+ * 
+ * @author squirlemaster42
+ */
 package org.usfirst.frc.team1699.utils.autonomous;
 
-//Will be used to store variables created in auto script
 public class Variable {
 	private Type type; //Stores type
 	private Value value; //Stores value
