@@ -1,3 +1,8 @@
+/**
+ * Utils for getting values and running commands
+ * 
+ * @author squirlemaster42
+ */
 package org.usfirst.frc.team1699.utils.autonomous;
 
 import java.util.ArrayList;
