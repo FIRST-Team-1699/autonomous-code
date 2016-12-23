@@ -43,4 +43,8 @@ public class CommentUtils {
 		}
 		return newLine;
 	}
+
+	public static boolean isComment(String string) {
+		return string.contains("//") || string.contains("~");
+	}
 }

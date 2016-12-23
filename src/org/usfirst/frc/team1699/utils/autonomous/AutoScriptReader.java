@@ -76,6 +76,8 @@ public class AutoScriptReader {
 					i += IfConditionalUtils.getIfLength(fileAsString, i);
 				}else if(IfConditionalUtils.isCommand(fileAsString.get(i), cmds)){
 					callCommandFromString(fileAsString.get(i)); //sends string to method so it can be converted to an object
+				}else if(CommentUtils.isComment(fileAsString.get(i))){
+					i += 1;
 				}else{
 					throw new InvalidLineException();
 				}
