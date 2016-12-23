@@ -22,7 +22,6 @@ public class IfConditionalUtils {
 	
 	public static boolean ifConditional(ArrayList<String> fileAsString, int startLine, Tokenizer reader){
 		String[] conLine = fileAsString.get(startLine).split(" ");
-		String runLine = fileAsString.get(startLine + 1);
 		String conditional = "";
 		int conditionalStart = 0;
 		int conditionalEnd = 0;
