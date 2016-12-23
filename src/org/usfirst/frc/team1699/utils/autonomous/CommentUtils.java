@@ -28,6 +28,7 @@ public class CommentUtils {
 	 * @param line
 	 * @return newLine
 	 */
+	//Does not work currently, will be fixed soon
 	@Deprecated
 	public String removeMultiLineComments(String line) {
 		boolean isComment = false; //Holds a boolean to keep track of whether or not a character is part of a multi-line comment
@@ -44,6 +45,12 @@ public class CommentUtils {
 		return newLine;
 	}
 
+	/**
+	 * Determines if string is a command
+	 * 
+	 * @param string
+	 * @return
+	 */
 	public static boolean isComment(String string) {
 		return string.contains("//") || string.contains("~");
 	}
