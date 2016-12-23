@@ -115,4 +115,8 @@ public class AutoUtils {
 		// Return the output
 		return out;
 	}
+
+	public static boolean parseBoolean(String str) {
+		return str.equals("true") || str.equals("True");
+	}
 }
