@@ -23,7 +23,6 @@ public class AutoScriptReader {
 	 * Constructor
 	 * 
 	 * @param path
-	 * @param numLines
 	 * @param cmds
 	 */
 	@SuppressWarnings("static-access")
@@ -44,8 +43,7 @@ public class AutoScriptReader {
 	/**
 	 * Constructor
 	 * 
-	 * @param path
-	 * @param numLines
+	 * @param cs
 	 * @param cmds
 	 */
 	@SuppressWarnings("static-access")
@@ -80,10 +78,20 @@ public class AutoScriptReader {
 		return fileAsString;
 	}
 	
+	/**
+	 * Returns an instance of Tokenizer
+	 * 
+	 * @return
+	 */
 	public Tokenizer getTokenizer(){
 		return this.tokenizer;
 	}
 	
+	/**
+	 * Returns an instance of ConfigSection
+	 * 
+	 * @return
+	 */
 	public ConfigSection getCs() {
 		return cs;
 	}
