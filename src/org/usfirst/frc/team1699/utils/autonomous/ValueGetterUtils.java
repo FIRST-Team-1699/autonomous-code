@@ -86,4 +86,21 @@ public class ValueGetterUtils {
 		}
 		return 0.0;
 	}
+	
+	/**
+	 * Runs each line
+	 * Called from runScript()
+	 * 
+	 * @param inp
+	 * @throws CommandNotFoundException
+	 */
+	public static void callCommandFromString(String inp, ArrayList<Command> cmds){
+		String[] cmdLine = inp.split(" "); //Creates a string array and sets it equal to the input string split at spaces
+		double speed = ValueGetterUtils.getSpeed(cmdLine); //Makes a double called speed and set it equal to the speed specified in the auto file
+		double distance = ValueGetterUtils.getDistance(cmdLine); //Makes a double called distance and set it equal to the distance specified in the auto file
+		Command cmd = ValueGetterUtils.getCmd(cmdLine, cmds); //Makes an object called command and sets it equal to the command in the auto file
+		boolean useSensor = ValueGetterUtils.getUseSensor(cmdLine); //Makes a boolean called use sensor and set true if the auto file specifies that a sensor should be used
+		
+		((Command) cmd).runAuto(distance, speed, useSensor); //Cast the cmd object to type Command and runs the runAuto method in it
+	}
 }
