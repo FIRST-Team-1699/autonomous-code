@@ -53,11 +53,11 @@ public class IfConditionalUtils {
 	 * @return
 	 */
 	public static boolean evaluateConditional(String conditional, Tokenizer tokenizer){
-		String firstStatement = "";
-		String secondStatement = "";
-		String conditionalSymbol  = "";
-		Type firstType;
-		Type secondType;
+		String firstStatement = ""; //Will store first statement that needs to be evaluated
+		String secondStatement = ""; //Will store second statement that needs to be evaluated
+		String conditionalSymbol  = ""; //Will store conditional that is used to evaluate
+		Type firstType; //Stores type of first statement
+		Type secondType; //Stores type of second statement
 		
 		if(conditional.contains(">") || conditional.contains("<") || conditional.contains(">=") || conditional.contains("<=") || conditional.contains("==") || conditional.contains("!=")){
 			for(int i = 0; i < conditional.length(); i++){
@@ -86,7 +86,7 @@ public class IfConditionalUtils {
 				case 5: return AutoUtils.parseDouble(firstStatement) != AutoUtils.parseDouble(secondStatement);
 				default: return false;
 			}
-		}else if(firstType.equals(Type.STRING) && secondType.equals(Type.STRING)){
+		}else if(firstType.equals(Type.STRING) && secondType.equals(Type.STRING)){ //Should be looked at at some point
 			return firstStatement.equals(secondStatement);
 		}else{
 			return false;
