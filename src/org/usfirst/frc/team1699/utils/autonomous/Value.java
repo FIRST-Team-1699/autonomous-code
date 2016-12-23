@@ -1,6 +1,10 @@
+/**
+ * Holds an object that represents the value of a variable 
+ * 
+ * @author squirlemaster42
+ */
 package org.usfirst.frc.team1699.utils.autonomous;
 
-//Holds an object that represents the value of a variable
 public class Value {
 	private Object value;
 	
