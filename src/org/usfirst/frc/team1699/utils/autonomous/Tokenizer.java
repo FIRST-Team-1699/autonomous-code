@@ -1,10 +1,15 @@
+/**
+ * Converts strings into tokens
+ * 
+ * @author squirlemaster42
+ * @see http://cogitolearning.co.uk/?p=525
+ */
 package org.usfirst.frc.team1699.utils.autonomous;
 
 import java.util.LinkedList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-//http://cogitolearning.co.uk/?p=525
 public class Tokenizer {
 	
 	private class TokenInfo{
