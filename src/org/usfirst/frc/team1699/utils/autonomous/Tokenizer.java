@@ -11,6 +11,12 @@ public class Tokenizer {
 		public final Pattern regex;
 		public final int token;
 		
+		/**
+		 * Constructor
+		 * 
+		 * @param regex
+		 * @param token
+		 */
 		public TokenInfo(Pattern regex, int token){
 			super();
 			this.regex = regex;
@@ -22,6 +28,12 @@ public class Tokenizer {
 		public final int token;
 		public final String sequence;
 		
+		/**
+		 * Constructor
+		 * 
+		 * @param token
+		 * @param sequence
+		 */
 		public Token(int token, String sequence){
 			super();
 			this.token = token;
@@ -30,17 +42,31 @@ public class Tokenizer {
 	}
 	
 	private LinkedList<TokenInfo> tokenInfos;
-	private LinkedList<Token> tokens ;
+	private LinkedList<Token> tokens;
 	
+	/**
+	 * Constructor
+	 */
 	public Tokenizer(){
 		tokenInfos = new LinkedList<TokenInfo>();
 		tokens = new LinkedList<Token>();
 	}
 	
+	/**
+	 * Adds token
+	 * 
+	 * @param regex
+	 * @param token
+	 */
 	public void add(String regex, int token){
 		tokenInfos.add(new TokenInfo(Pattern.compile("^(" + regex + ")"), token));
 	}
 	
+	/**
+	 * Creates tokens for string
+	 * 
+	 * @param str
+	 */
 	public void tokenize(String str){
 		String s = str.trim();
 		tokens.clear();
@@ -62,6 +88,11 @@ public class Tokenizer {
 		}
 	}
 
+	/**
+	 * Returns tokens
+	 * 
+	 * @return
+	 */
 	public LinkedList<Token> getTokens() {
 		return tokens;		
 	}
