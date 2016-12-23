@@ -109,7 +109,7 @@ public class AutoScriptReader {
 						}
 					}
 					i += IfConditionalUtils.getIfLength(fileAsString, i);
-				}else if(IfConditionalUtils.isCommand(fileAsString.get(i), cmds)){
+				}else if(ValueGetterUtils.isCommand(fileAsString.get(i), cmds)){
 					ValueGetterUtils.callCommandFromString(fileAsString.get(i), cmds); //Sends string to method so it can be converted to an object then calls command's run autoMethod
 				}else if(CommentUtils.isComment(fileAsString.get(i))){
 					i += 1;

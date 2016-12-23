@@ -6,19 +6,9 @@ import org.usfirst.frc.team1699.utils.autonomous.Tokenizer.Token;
 import org.usfirst.frc.team1699.utils.command.Command;
 
 public class IfConditionalUtils {
-	private static final String[] validConditionalSymbols = {"<", ">", "==", "<=", ">="};
+	private static final String[] validConditionalSymbols = {"<", ">", "==", "<=", ">="}; //Stores valid conditional symbols
 	
-	public static boolean isCommand(String string, ArrayList<Command> cmds) {
-		String[] inp = string.split(" ");
-		for(int i = 0; i < inp.length; i++){
-			for(int j = 0; j < cmds.size(); j++){
-				if(cmds.get(j).getName().equals(inp[i])){
-					return true;
-				}
-			}
-		}
-		return false;
-	}
+	
 	
 	public static boolean ifConditional(ArrayList<String> fileAsString, int startLine, Tokenizer reader){
 		String[] conLine = fileAsString.get(startLine).split(" ");

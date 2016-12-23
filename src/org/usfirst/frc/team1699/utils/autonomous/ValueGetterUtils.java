@@ -7,6 +7,25 @@ import org.usfirst.frc.team1699.utils.command.Command;
 public class ValueGetterUtils {
 	
 	/**
+	 * Returns true if the string is a command
+	 * 
+	 * @param string
+	 * @param cmds
+	 * @return
+	 */
+	public static boolean isCommand(String string, ArrayList<Command> cmds) {
+		String[] inp = string.split(" ");
+		for(int i = 0; i < inp.length; i++){
+			for(int j = 0; j < cmds.size(); j++){
+				if(cmds.get(j).getName().equals(inp[i])){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	/**
 	 * Determines whether to use sensor or not
 	 * 
 	 * @param cmdLine
