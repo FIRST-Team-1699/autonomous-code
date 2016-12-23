@@ -9,6 +9,7 @@ package org.usfirst.frc.team1699.utils.autonomous;
 import java.util.ArrayList;
 
 import org.usfirst.frc.team1699.utils.command.Command;
+import org.usfirst.frc.team1699.utils.inireader.ConfigSection;
 
 public class AutoScriptReader {
 	
@@ -16,6 +17,7 @@ public class AutoScriptReader {
 	private ArrayList<String> fileAsString; //Array list that hold the autoFile as an array of strings
 	private static ArrayList<Command> cmds; //Holds a list of all commands in an array
 	private Tokenizer tokenizer;
+	private ConfigSection cs;
 	
 	/**
 	 * Constructor
@@ -30,6 +32,28 @@ public class AutoScriptReader {
 		this.path = path;
 		this.cmds = cmds;
 		fileAsString = AutoUtils.loadFileAsArray(path); //Sets fileAsArray list equal to the file
+		tokenizer = new Tokenizer();
+		tokenizer.add("<", 0);
+		tokenizer.add(">", 1);
+		tokenizer.add("<=", 2);
+		tokenizer.add(">=", 3);
+		tokenizer.add("==", 4);
+		tokenizer.add("!=", 5);
+	}
+	
+	/**
+	 * Constructor
+	 * 
+	 * @param path
+	 * @param numLines
+	 * @param cmds
+	 */
+	@SuppressWarnings("static-access")
+	public AutoScriptReader(ConfigSection cs, ArrayList<Command> cmds){
+		//Sets instance vars to values input by programmer
+		this.cs = cs;
+		this.cmds = cmds;
+		fileAsString = AutoUtils.loadFileAsArray(cs); //Sets fileAsArray list equal to the file
 		tokenizer = new Tokenizer();
 		tokenizer.add("<", 0);
 		tokenizer.add(">", 1);
