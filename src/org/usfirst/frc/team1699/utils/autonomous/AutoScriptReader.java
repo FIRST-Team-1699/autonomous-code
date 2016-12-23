@@ -51,7 +51,6 @@ public class AutoScriptReader {
 	@SuppressWarnings("static-access")
 	public AutoScriptReader(ConfigSection cs, ArrayList<Command> cmds){
 		//Sets instance vars to values input by programmer
-		this.cs = cs;
 		this.cmds = cmds;
 		fileAsString = AutoUtils.loadFileAsArray(cs); //Sets fileAsArray list equal to the file
 		tokenizer = new Tokenizer();
@@ -85,6 +84,10 @@ public class AutoScriptReader {
 		return this.tokenizer;
 	}
 	
+	public ConfigSection getCs() {
+		return cs;
+	}
+	
 	/**
 	 * Runs all lines of file (main)
 	 */
@@ -111,6 +114,5 @@ public class AutoScriptReader {
 				break;
 			}
 		}
-	}
-	
+	}	
 }
