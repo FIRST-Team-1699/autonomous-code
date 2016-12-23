@@ -1,9 +1,13 @@
+/**
+ * Utils for finding an evaluating conditionals
+ * 
+ * @author squirlemaster42
+ */
 package org.usfirst.frc.team1699.utils.autonomous;
 
 import java.util.ArrayList;
 
 import org.usfirst.frc.team1699.utils.autonomous.Tokenizer.Token;
-import org.usfirst.frc.team1699.utils.command.Command;
 
 public class IfConditionalUtils {
 	private static final String[] validConditionalSymbols = {"<", ">", "==", "<=", ">="}; //Stores valid conditional symbols
