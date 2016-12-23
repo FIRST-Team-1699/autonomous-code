@@ -30,7 +30,6 @@ public class AutoScriptReader {
 		this.path = path;
 		this.cmds = cmds;
 		fileAsString = AutoUtils.loadFileAsArray(path); //Sets fileAsArray list equal to the file
-		System.out.println("Start");
 		tokenizer = new Tokenizer();
 		tokenizer.add("<", 0);
 		tokenizer.add(">", 1);
@@ -38,7 +37,6 @@ public class AutoScriptReader {
 		tokenizer.add(">=", 3);
 		tokenizer.add("==", 4);
 		tokenizer.add("!=", 5);
-		System.out.println("Ran");
 	}
 	
 	/**

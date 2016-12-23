@@ -43,7 +43,6 @@ public class IfConditionalUtils {
 			conditional += conLine[i] + " ";
 		}
 		
-		System.out.println(conditional);
 		return evaluateConditional(conditional, reader);
 	}
 	
@@ -54,18 +53,17 @@ public class IfConditionalUtils {
 		Type firstType;
 		Type secondType;
 		
-		for(int i = 0; i < conditional.length(); i++){
-			if(isConditional(conditional.substring(i, i + 1))){
-				firstStatement = conditional.substring(0, i);
-				secondStatement = conditional.substring(i + 1);
-				conditionalSymbol = getConditional(conditional);
-				break;
+		if(conditional.contains(">") || conditional.contains("<") || conditional.contains(">=") || conditional.contains("<=") || conditional.contains("==") || conditional.contains("!=")){
+			for(int i = 0; i < conditional.length(); i++){
+				if(conditional.substring(i, i + 1).equals(">") || conditional.substring(i, i + 1).equals("<") || conditional.substring(i, i + 1).equals(">=") || conditional.substring(i, i + 1).equals("<=") || conditional.substring(i, i + 1).equals("==") || conditional.substring(i, i + 1).equals("!=")){
+					conditionalSymbol = conditional.substring(i, i + 1);
+					firstStatement = conditional.substring(0, i);
+					secondStatement = conditional.substring(i + 1).trim();
+				}
 			}
+		}else{
+			//boolean
 		}
-		
-		System.out.println(firstStatement);
-		System.out.println(secondStatement);
-		System.out.println(conditionalSymbol);
 		
 		firstType = getType(firstStatement);
 		secondType = getType(secondStatement);
@@ -73,7 +71,6 @@ public class IfConditionalUtils {
 		if((firstType.equals(Type.DOUBLE) || firstType.equals(Type.INTEGER)) && (secondType.equals(Type.DOUBLE) || secondType.equals(Type.INTEGER))){
 			tokenizer.tokenize(conditionalSymbol);
 			Token tok = tokenizer.getTokens().get(0);
-			System.out.println("here");
 			switch(tok.token){
 				case 0: return AutoUtils.parseDouble(firstStatement) < AutoUtils.parseDouble(secondStatement);
 				case 1: return AutoUtils.parseDouble(firstStatement) > AutoUtils.parseDouble(secondStatement);
@@ -84,7 +81,6 @@ public class IfConditionalUtils {
 				default: return false;
 			}
 		}else if(firstType.equals(Type.STRING) && secondType.equals(Type.STRING)){
-			System.out.println("Here");
 			return firstStatement.equals(secondStatement);
 		}else{
 			return false;
