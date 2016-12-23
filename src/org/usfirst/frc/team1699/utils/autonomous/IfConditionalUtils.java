@@ -104,6 +104,8 @@ public class IfConditionalUtils {
 			return Type.INTEGER;
 		}else if((str.contains(".")) && (!str.contains("\""))){
 			return Type.DOUBLE;
+		}else if(str.equals("true") || str.equals("false")){
+			return Type.BOOLEAN;
 		}else{
 			return Type.STRING;
 		}
