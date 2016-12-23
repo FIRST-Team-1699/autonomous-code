@@ -8,8 +8,8 @@ import java.util.regex.Pattern;
 public class Tokenizer {
 	
 	private class TokenInfo{
-		public final Pattern regex;
-		public final int token;
+		public final Pattern regex; //Stores a pattern
+		public final int token; //Stores token id
 		
 		/**
 		 * Constructor
@@ -25,8 +25,8 @@ public class Tokenizer {
 	}
 	
 	public class Token{
-		public final int token;
-		public final String sequence;
+		public final int token; //Stores token id
+		public final String sequence; //Stores string
 		
 		/**
 		 * Constructor
@@ -41,15 +41,15 @@ public class Tokenizer {
 		}
 	}
 	
-	private LinkedList<TokenInfo> tokenInfos;
-	private LinkedList<Token> tokens;
+	private LinkedList<TokenInfo> tokenInfos; //List of token info
+	private LinkedList<Token> tokens; //List of tokens
 	
 	/**
 	 * Constructor
 	 */
 	public Tokenizer(){
-		tokenInfos = new LinkedList<TokenInfo>();
-		tokens = new LinkedList<Token>();
+		tokenInfos = new LinkedList<TokenInfo>(); //Init
+		tokens = new LinkedList<Token>(); //Init
 	}
 	
 	/**
