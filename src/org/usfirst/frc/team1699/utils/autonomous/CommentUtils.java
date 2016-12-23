@@ -1,3 +1,8 @@
+/**
+ * Utils for dealing with comments
+ * 
+ * @author squirlemaster42
+ */
 package org.usfirst.frc.team1699.utils.autonomous;
 
 public class CommentUtils {
