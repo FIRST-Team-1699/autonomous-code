@@ -68,7 +68,7 @@ public class IfConditionalUtils {
 				}
 			}
 		}else{
-			//boolean
+			return AutoUtils.parseBoolean(conditional.trim());
 		}
 		
 		firstType = getType(firstStatement);
