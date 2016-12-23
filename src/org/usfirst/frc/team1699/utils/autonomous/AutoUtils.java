@@ -93,8 +93,7 @@ public class AutoUtils {
 	/**
 	 * Reads a file and returns it as an array of integers
 	 * 
-	 * @param file
-	 * @param mode
+	 * @param section
 	 * @return
 	 */
 	public static ArrayList<String> loadFileAsArray(ConfigSection section) { //Takes a ConfigFile and return it as an array of ints
