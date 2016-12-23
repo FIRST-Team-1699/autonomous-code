@@ -116,7 +116,7 @@ public class AutoUtils {
 		return out;
 	}
 
-	public static boolean parseBoolean(String str) {
+	public static boolean parseBoolean(String str) { //Needs work
 		return str.equals("true") || str.equals("True");
 	}
 }
