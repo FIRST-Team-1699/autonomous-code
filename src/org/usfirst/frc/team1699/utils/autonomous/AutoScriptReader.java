@@ -16,8 +16,8 @@ public class AutoScriptReader {
 	private String path; //Stores the path a the text file containing auto script
 	private ArrayList<String> fileAsString; //Array list that hold the autoFile as an array of strings
 	private static ArrayList<Command> cmds; //Holds a list of all commands in an array
-	private Tokenizer tokenizer;
-	private ConfigSection cs;
+	private Tokenizer tokenizer; //Holds an instance of Tokenizer
+	private ConfigSection cs; //Holds an instance of ConfigSection
 	
 	/**
 	 * Constructor
