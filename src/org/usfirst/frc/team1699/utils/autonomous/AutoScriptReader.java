@@ -60,6 +60,10 @@ public class AutoScriptReader {
 		tokenizer.add(">=", 3);
 		tokenizer.add("==", 4);
 		tokenizer.add("!=", 5);
+		tokenizer.add("int", 6);
+		tokenizer.add("boolean", 7);
+		tokenizer.add("double", 8);
+		tokenizer.add("String", 9);
 	}
 	
 	/**
@@ -115,6 +119,8 @@ public class AutoScriptReader {
 					ValueGetterUtils.callCommandFromString(fileAsString.get(i), cmds); //Sends string to method so it can be converted to an object then calls command's run autoMethod
 				}else if(CommentUtils.isComment(fileAsString.get(i))){
 					i += 1;
+				}else if(VariableUtils.isVariable(fileAsString.get(i), tokenizer)){
+					VariableUtils.makeVar(fileAsString.get(i), tokenizer);
 				}else{
 					throw new InvalidLineException();
 				}
