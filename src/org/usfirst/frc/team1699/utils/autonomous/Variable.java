@@ -8,6 +8,7 @@ package org.usfirst.frc.team1699.utils.autonomous;
 public class Variable {
 	private Type type; //Stores type
 	private Value value; //Stores value
+	private String name;
 	
 	/**
 	 * Constructor
@@ -15,8 +16,9 @@ public class Variable {
 	 * @param type
 	 * @param value
 	 */
-	public Variable(Type type, Value value){
+	public Variable(Type type, Value value, String name){
 		this.type = type;
+		this.name = name;
 		this.value = value;
 	}
 

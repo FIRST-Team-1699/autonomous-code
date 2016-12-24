@@ -17,19 +17,39 @@ public class VariableUtils {
 	}
 	
 	private static Variable makeInt(String line){
-		return null;
+		Integer value;
+		String name;
+		String[] lineArr = line.split(" ");
+		name = lineArr[1];
+		value = AutoUtils.parseInt(lineArr[2]);
+		return new Variable(Type.INTEGER, new Value(value), name);
 	}
 
 	private static Variable makeBoolean(String line){
-		return null;
+		Boolean value;
+		String name;
+		String[] lineArr = line.split(" ");
+		name = lineArr[1];
+		value = AutoUtils.parseBoolean(lineArr[2]);
+		return new Variable(Type.INTEGER, new Value(value), name);
 	}
 	
 	private static Variable makeDouble(String line){
-		return null;
+		Double value;
+		String name;
+		String[] lineArr = line.split(" ");
+		name = lineArr[1];
+		value = AutoUtils.parseDouble(lineArr[2]);
+		return new Variable(Type.INTEGER, new Value(value), name);
 	}
 	
 	private static Variable makeString(String line){
-		return null;
+		String value;
+		String name;
+		String[] lineArr = line.split(" ");
+		name = lineArr[1];
+		value = lineArr[2];
+		return new Variable(Type.INTEGER, new Value(value), name);
 	}
 	
 	public static boolean isVariable(String line, Tokenizer tokenizer){
