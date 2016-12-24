@@ -32,12 +32,7 @@ public class AutoScriptReader {
 		this.cmds = cmds;
 		fileAsString = AutoUtils.loadFileAsArray(path); //Sets fileAsArray list equal to the file
 		tokenizer = new Tokenizer();
-		tokenizer.add("<", 0);
-		tokenizer.add(">", 1);
-		tokenizer.add("<=", 2);
-		tokenizer.add(">=", 3);
-		tokenizer.add("==", 4);
-		tokenizer.add("!=", 5);
+		addTokens();
 	}
 	
 	/**
@@ -52,6 +47,13 @@ public class AutoScriptReader {
 		this.cmds = cmds;
 		fileAsString = AutoUtils.loadFileAsArray(cs); //Sets fileAsArray list equal to the file
 		tokenizer = new Tokenizer();
+		addTokens();
+	}
+	
+	/**
+	 * Adds tokens to tokenizer
+	 */
+	private void addTokens(){
 		tokenizer.add("<", 0);
 		tokenizer.add(">", 1);
 		tokenizer.add("<=", 2);
