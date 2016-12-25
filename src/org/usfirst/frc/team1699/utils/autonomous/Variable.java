@@ -5,21 +5,26 @@
  */
 package org.usfirst.frc.team1699.utils.autonomous;
 
+import java.util.ArrayList;
+
 public class Variable {
 	private Type type; //Stores type
 	private Value value; //Stores value
 	private String name;
+	private static ArrayList<Variable> vars = new ArrayList<>();;
 	
 	/**
 	 * Constructor
 	 * 
 	 * @param type
 	 * @param value
+	 * @param name
 	 */
 	public Variable(Type type, Value value, String name){
 		this.type = type;
 		this.name = name;
 		this.value = value;
+		vars.add(this);
 	}
 
 	/**
