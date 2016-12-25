@@ -62,4 +62,26 @@ public class Variable {
 	public void setValue(Value value) {
 		this.value = value;
 	}
+	
+	public String getName(){
+		return name;
+	}
+	
+	public static Variable getVar(String name){
+		for(int i = 0; i < vars.size(); i++){
+			if(vars.get(i).getName().equals(name)){
+				return vars.get(i);
+			}
+		}
+		return null;
+	}
+	
+	public static boolean isVar(String name){
+		for(int i = 0; i < vars.size(); i++){
+			if(vars.get(i).getName().equals(name)){
+				return true;
+			}
+		}
+		return false;
+	}
 }
