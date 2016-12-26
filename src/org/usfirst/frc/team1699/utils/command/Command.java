@@ -124,14 +124,4 @@ public abstract class Command implements AutoCommand, Commandable{
 	public static Set<String> getCmdNames(){ //Returns CommandNameArray
 		return cmdNames;
 	}
-	
-	/**
-	 * Gets command id set
-	 * 
-	 * @return
-	 */
-	public static Set<Integer> getCmdId(){ //ReturnCommandIdArray
-		return cmdId;
-	}
-	
 }
