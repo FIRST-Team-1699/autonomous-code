@@ -18,9 +18,6 @@ public abstract class Command implements AutoCommand, Commandable{
 
 	private String name; //Holds command name
 	private int id; //Holds command id
-	//Move to another class https://en.wikipedia.org/wiki/Single_responsibility_principle
-	private static Set<String> cmdNames = new HashSet<String>(); //Makes a new static instance of Set that can only hold Strings
-	private static Set<Integer> cmdId = new HashSet<Integer>(); //Makes a new static instance of Set that can only hold Integers
 
 	/**
 	 * Constructor
@@ -31,18 +28,6 @@ public abstract class Command implements AutoCommand, Commandable{
 	public Command(String name, int id) { //Constructor, sets instance vars equal to input and adds command name and id to respective sets
 		this.name = name;
 		this.id = id;
-		
-		if(cmdNames.add(name)){
-			cmdNames.add(name);
-		} else {
-			throw new NameUsedException();
-		}
-		
-		if(cmdId.add(id)){
-			cmdId.add(id);
-		} else {
-			throw new IdUsedException();
-		}
 	}
 
 	/**
@@ -115,14 +100,5 @@ public abstract class Command implements AutoCommand, Commandable{
 	 */
 	public boolean equals(String inpStr){ //Used to compare commands
 		return this.name.toLowerCase().equals(inpStr.toLowerCase());
-	}
-	
-	/**
-	 * Gets command name set
-	 * 
-	 * @return
-	 */
-	public static Set<String> getCmdNames(){ //Returns CommandNameArray
-		return cmdNames;
 	}
 }

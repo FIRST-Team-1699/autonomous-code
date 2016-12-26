@@ -18,6 +18,10 @@ public class CommandMap {
 		return cmds.get(key);
 	}
 	
+	public boolean hasKey(String key){
+		return cmds.containsKey(key);
+	}
+	
 	public void removeCmd(String key){
 		cmds.remove(key);
 	}

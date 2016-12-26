@@ -9,6 +9,7 @@ package org.usfirst.frc.team1699.utils.autonomous;
 import java.util.ArrayList;
 
 import org.usfirst.frc.team1699.utils.command.Command;
+import org.usfirst.frc.team1699.utils.command.CommandMap;
 import org.usfirst.frc.team1699.utils.inireader.ConfigSection;
 
 public class AutoScriptReader {
@@ -18,6 +19,7 @@ public class AutoScriptReader {
 	private static ArrayList<Command> cmds; //Holds a list of all commands in an array
 	private Tokenizer tokenizer; //Holds an instance of Tokenizer
 	private ConfigSection cs; //Holds an instance of ConfigSection
+	private CommandMap map;
 	
 	/**
 	 * Constructor
@@ -26,10 +28,11 @@ public class AutoScriptReader {
 	 * @param cmds
 	 */
 	@SuppressWarnings("static-access")
-	public AutoScriptReader(String path, ArrayList<Command> cmds){
+	public AutoScriptReader(String path, ArrayList<Command> cmds, CommandMap map){
 		//Sets instance vars to values input by programmer
 		this.path = path;
 		this.cmds = cmds;
+		this.map = map;
 		fileAsString = AutoUtils.loadFileAsArray(path); //Sets fileAsArray list equal to the file
 		tokenizer = new Tokenizer();
 		addTokens();
@@ -42,9 +45,10 @@ public class AutoScriptReader {
 	 * @param cmds
 	 */
 	@SuppressWarnings("static-access")
-	public AutoScriptReader(ConfigSection cs, ArrayList<Command> cmds){
+	public AutoScriptReader(ConfigSection cs, ArrayList<Command> cmds, CommandMap map){
 		//Sets instance vars to values input by programmer
 		this.cmds = cmds;
+		this.map = map;
 		fileAsString = AutoUtils.loadFileAsArray(cs); //Sets fileAsArray list equal to the file
 		tokenizer = new Tokenizer();
 		addTokens();
@@ -111,12 +115,12 @@ public class AutoScriptReader {
 				if(IfConditionalUtils.containsIfConditional(fileAsString.get(i))){
 					if(IfConditionalUtils.ifConditional(fileAsString, i, tokenizer)){
 						for(int j = i + 1; j < IfConditionalUtils.getIfLength(fileAsString, i) + i; j++){
-							ValueGetterUtils.callCommandFromString(fileAsString.get(j), cmds);
+							ValueGetterUtils.callCommandFromString(fileAsString.get(j), cmds, map);
 						}
 					}
 					i += IfConditionalUtils.getIfLength(fileAsString, i);
 				}else if(ValueGetterUtils.isCommand(fileAsString.get(i), cmds)){
-					ValueGetterUtils.callCommandFromString(fileAsString.get(i), cmds); //Sends string to method so it can be converted to an object then calls command's run autoMethod
+					ValueGetterUtils.callCommandFromString(fileAsString.get(i), cmds, map); //Sends string to method so it can be converted to an object then calls command's run autoMethod
 				}else if(CommentUtils.isComment(fileAsString.get(i))){
 					i += 1;
 				}else if(VariableUtils.isVariable(fileAsString.get(i), tokenizer)){
