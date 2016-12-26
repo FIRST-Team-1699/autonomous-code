@@ -10,6 +10,9 @@ public class Value {
 	
 	public Value(Object value){
 		this.value = value;
-		//Converts value to a variable
+	}
+	
+	public Object getValue(){
+		return value;
 	}
 }

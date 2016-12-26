@@ -18,6 +18,7 @@ public abstract class Command implements AutoCommand, Commandable{
 
 	private String name; //Holds command name
 	private int id; //Holds command id
+	//Move to another class https://en.wikipedia.org/wiki/Single_responsibility_principle
 	private static Set<String> cmdNames = new HashSet<String>(); //Makes a new static instance of Set that can only hold Strings
 	private static Set<Integer> cmdId = new HashSet<Integer>(); //Makes a new static instance of Set that can only hold Integers
 

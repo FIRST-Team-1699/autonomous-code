@@ -9,7 +9,6 @@ package org.usfirst.frc.team1699.utils.autonomous;
 import java.util.LinkedList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 public class Tokenizer {
 	
 	private class TokenInfo{
