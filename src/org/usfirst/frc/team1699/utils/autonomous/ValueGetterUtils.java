@@ -60,19 +60,11 @@ public class ValueGetterUtils {
 	public static Command getCmd(String[] cmdLine, ArrayList<Command> cmds, CommandMap map) throws CommandNotFoundException{
 		if(map.hasKey(cmdLine[0])){ //Looks at cmdLine and determines if the first line is a valid command
 			String cmdStr = cmdLine[0];
-			
-			for(int i = 0; i < cmds.size(); i++){ //Loops through the list of command objects and determines what object matches the command then that object is returned
-				Command cmdToTest = cmds.get(i);
-				if(cmdToTest.equals(cmdStr)){
-					Command cmd = cmds.get(i);
-					return cmd;
-				}
-			}
+			Command cmd = map.getCommand(cmdStr);
+			return cmd;
 		}else{
 			throw new CommandNotFoundException();
 		}
-		
-		return null;
 	}
 	
 	/**
