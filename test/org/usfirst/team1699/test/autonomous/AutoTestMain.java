@@ -2,6 +2,7 @@ package org.usfirst.team1699.test.autonomous;
 
 import java.util.ArrayList;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.usfirst.frc.team1699.utils.autonomous.AutoScriptReader;
 import org.usfirst.frc.team1699.utils.autonomous.AutoUtils;
@@ -28,23 +29,20 @@ public class AutoTestMain {
 		map.addEntry(t.getName(), t);
 		map.addEntry(s.getName(), s);
 		
-		ArrayList<Command> cmd = new ArrayList<>();
-		cmd.add(d);
-		cmd.add(t);
-		cmd.add(s);
-		
-		AutoScriptReader path = new AutoScriptReader(filePath, cmd, map);
+		AutoScriptReader path = new AutoScriptReader(filePath, map);
 		
 		path.runScript();
 	}
 	
-	//@Test
+	@Test
+	@Ignore
 	public void arrayListFileTest(){
 		String filePath = "autoTestFiles/test.nav";
 		System.out.println(AutoUtils.loadFileAsArray(filePath));
 	}
 	
-	//@Test
+	@Test
+	@Ignore
 	public void commentTest(){
 		String test = "This is a line. //This should be gone";
 		String other = "This stays. ~This is gone.";
@@ -53,7 +51,8 @@ public class AutoTestMain {
 		System.out.println(CommentUtils.removeLineComments(other));
 	}
 	
-	//@Test
+	@Test
+	@Ignore
 	public void tokenizerTest(){
 		Tokenizer tokenizer = new Tokenizer();
 		tokenizer.add("<", 0);

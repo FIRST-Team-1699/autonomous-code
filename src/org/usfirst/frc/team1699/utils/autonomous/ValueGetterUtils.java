@@ -19,14 +19,10 @@ public class ValueGetterUtils {
 	 * @param cmds
 	 * @return
 	 */
-	public static boolean isCommand(String string, ArrayList<Command> cmds) {
+	public static boolean isCommand(String string, CommandMap map) {
 		String[] inp = string.split(" ");
 		for(int i = 0; i < inp.length; i++){
-			for(int j = 0; j < cmds.size(); j++){
-				if(cmds.get(j).getName().equals(inp[i])){
-					return true;
-				}
-			}
+			return map.hasKey(inp[i]);
 		}
 		return false;
 	}
@@ -57,7 +53,7 @@ public class ValueGetterUtils {
 	 * @return
 	 * @throws CommandNotFoundException
 	 */
-	public static Command getCmd(String[] cmdLine, ArrayList<Command> cmds, CommandMap map) throws CommandNotFoundException{
+	public static Command getCmd(String[] cmdLine, CommandMap map) throws CommandNotFoundException{
 		if(map.hasKey(cmdLine[0])){ //Looks at cmdLine and determines if the first line is a valid command
 			String cmdStr = cmdLine[0];
 			Command cmd = map.getCommand(cmdStr);
@@ -111,11 +107,11 @@ public class ValueGetterUtils {
 	 * @param inp
 	 * @throws CommandNotFoundException
 	 */
-	public static void callCommandFromString(String inp, ArrayList<Command> cmds, CommandMap map){
+	public static void callCommandFromString(String inp, CommandMap map){
 		String[] cmdLine = inp.split(" "); //Creates a string array and sets it equal to the input string split at spaces
 		double speed = ValueGetterUtils.getSpeed(cmdLine); //Makes a double called speed and set it equal to the speed specified in the auto file
 		double distance = ValueGetterUtils.getDistance(cmdLine); //Makes a double called distance and set it equal to the distance specified in the auto file
-		Command cmd = ValueGetterUtils.getCmd(cmdLine, cmds, map); //Makes an object called command and sets it equal to the command in the auto file
+		Command cmd = ValueGetterUtils.getCmd(cmdLine, map); //Makes an object called command and sets it equal to the command in the auto file
 		boolean useSensor = ValueGetterUtils.getUseSensor(cmdLine); //Makes a boolean called use sensor and set true if the auto file specifies that a sensor should be used
 		
 		((Command) cmd).runAuto(distance, speed, useSensor); //Cast the cmd object to type Command and runs the runAuto method in it

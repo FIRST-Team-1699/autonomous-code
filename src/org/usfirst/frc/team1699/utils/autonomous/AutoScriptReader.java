@@ -16,7 +16,6 @@ public class AutoScriptReader {
 	
 	private String path; //Stores the path a the text file containing auto script
 	private ArrayList<String> fileAsString; //Array list that hold the autoFile as an array of strings
-	private static ArrayList<Command> cmds; //Holds a list of all commands in an array
 	private Tokenizer tokenizer; //Holds an instance of Tokenizer
 	private ConfigSection cs; //Holds an instance of ConfigSection
 	private CommandMap map;
@@ -27,11 +26,9 @@ public class AutoScriptReader {
 	 * @param path
 	 * @param cmds
 	 */
-	@SuppressWarnings("static-access")
-	public AutoScriptReader(String path, ArrayList<Command> cmds, CommandMap map){
+	public AutoScriptReader(String path, CommandMap map){
 		//Sets instance vars to values input by programmer
 		this.path = path;
-		this.cmds = cmds;
 		this.map = map;
 		fileAsString = AutoUtils.loadFileAsArray(path); //Sets fileAsArray list equal to the file
 		tokenizer = new Tokenizer();
@@ -45,9 +42,8 @@ public class AutoScriptReader {
 	 * @param cmds
 	 */
 	@SuppressWarnings("static-access")
-	public AutoScriptReader(ConfigSection cs, ArrayList<Command> cmds, CommandMap map){
+	public AutoScriptReader(ConfigSection cs, CommandMap map){
 		//Sets instance vars to values input by programmer
-		this.cmds = cmds;
 		this.map = map;
 		fileAsString = AutoUtils.loadFileAsArray(cs); //Sets fileAsArray list equal to the file
 		tokenizer = new Tokenizer();
@@ -115,12 +111,12 @@ public class AutoScriptReader {
 				if(IfConditionalUtils.containsIfConditional(fileAsString.get(i))){
 					if(IfConditionalUtils.ifConditional(fileAsString, i, tokenizer)){
 						for(int j = i + 1; j < IfConditionalUtils.getIfLength(fileAsString, i) + i; j++){
-							ValueGetterUtils.callCommandFromString(fileAsString.get(j), cmds, map);
+							ValueGetterUtils.callCommandFromString(fileAsString.get(j), map);
 						}
 					}
 					i += IfConditionalUtils.getIfLength(fileAsString, i);
-				}else if(ValueGetterUtils.isCommand(fileAsString.get(i), cmds)){
-					ValueGetterUtils.callCommandFromString(fileAsString.get(i), cmds, map); //Sends string to method so it can be converted to an object then calls command's run autoMethod
+				}else if(ValueGetterUtils.isCommand(fileAsString.get(i), map)){
+					ValueGetterUtils.callCommandFromString(fileAsString.get(i), map); //Sends string to method so it can be converted to an object then calls command's run autoMethod
 				}else if(CommentUtils.isComment(fileAsString.get(i))){
 					i += 1;
 				}else if(VariableUtils.isVariable(fileAsString.get(i), tokenizer)){
