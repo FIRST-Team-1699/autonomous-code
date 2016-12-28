@@ -30,11 +30,7 @@ public class BetterTimer extends edu.wpi.first.wpilibj.Timer {
 	 */
 	@Override
 	public void start() {
-		if (this.endTime == null) {
-			System.err.println("User tried to start a started timer.");
-		} else {
-			this.startTime = super.getFPGATimestamp();
-		}
+		this.startTime = super.getFPGATimestamp();
 	}
 
 	/**
@@ -42,12 +38,7 @@ public class BetterTimer extends edu.wpi.first.wpilibj.Timer {
 	 */
 	@Override
 	public void stop() {
-		if (this.startTime == null) {
-			System.err.println("User tried to end a finished timer.");
-		} else {
-			this.endTime = super.getFPGATimestamp();
-		}
-
+		this.endTime = super.getFPGATimestamp();
 		this.timePassed = Math.abs(startTime - endTime);
 	}
 
@@ -58,6 +49,7 @@ public class BetterTimer extends edu.wpi.first.wpilibj.Timer {
 	public void reset() {
 		this.startTime = null;
 		this.endTime = null;
+		this.timePassed = null;
 	}
 
 	/**
@@ -66,8 +58,8 @@ public class BetterTimer extends edu.wpi.first.wpilibj.Timer {
 	 * @return time between the timer starting and stopping
 	 */
 	public double getElapsed() {
-		if ((startTime == null) || (endTime == null)) {
-			throw new NullPointerException("Bad startTime or endTime in BetterTimer");
+		if (this.timePassed == null) {
+			System.err.println("timePassed is null!");
 		}
 		return this.timePassed;
 	}

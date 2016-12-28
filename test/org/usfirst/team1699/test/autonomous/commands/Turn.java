@@ -17,13 +17,8 @@ public class Turn extends org.usfirst.frc.team1699.utils.command.Command{
 	}
 
 	@Override
-	public void autoInit() {
-		
-	}
-
-	@Override
-	public void runAuto(int distance, double speed) {
-		System.out.println(distance + " " + speed);
+	public void runAuto(double distance, double speed, boolean useSensor) {
+		System.out.println(getName() + " " + distance + " " + speed + " " + useSensor);
 		
 	}
 

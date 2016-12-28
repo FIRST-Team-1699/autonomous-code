@@ -7,28 +7,57 @@ package org.usfirst.frc.team1699.utils.command;
 
 import java.util.ArrayList;
 
-public class CommandNameArray {
+@SuppressWarnings("rawtypes")
+@Deprecated
+public class CommandNameArray extends ArrayList{
 	
-		// Should store name and id and make sure that no id or name is a duplicate
-		private ArrayList<String> list;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1620171781964495707L;
+	private ArrayList<String> list; //Hold list of names
 
-		public CommandNameArray() {
-			list = new ArrayList<String>();
-		}
+	/**
+	 * Constructor
+	 */
+	public CommandNameArray() { //Constructor to name new instance of an ArrayList that will hold String objects
+		list = new ArrayList<String>();
+	}
 
-		public void addName(String name) {
-			if(list.contains(name)){
-				System.err.println("Id has already been used.");
-				return;
-			}
-			list.add(name);
+	/**
+	 * Adds a name to the array
+	 * 
+	 * @param name
+	 */
+	public void addName(String name) { //Adds name to array if it is unique
+		if(list.contains(name)){
+			System.err.println("Id has already been used.");
+			throw new NameUsedException();
 		}
-
-		public ArrayList<String> getList() {
-			return list;
+		list.add(name);
+	}
+	
+	/**
+	 * Puts a name at a certain index
+	 * 
+	 * @param index
+	 * @param name
+	 */
+	public void setName(int index, String name){ //Used to put a name as a specific index
+		if(list.contains(name)){
+			System.err.println("Id has already been used.");
+			throw new NameUsedException();
 		}
-		
-		public boolean contains(String str){
-			return list.contains(str);
-		}
+		list.set(index, name);
+	}
+	
+	/**
+	 * Returns the name array
+	 * 
+	 * @return
+	 */
+	public ArrayList<String> getList() { //Returns list of names
+		return list;
+	}
+	
 }

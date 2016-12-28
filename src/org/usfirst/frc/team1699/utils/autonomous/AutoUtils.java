@@ -11,7 +11,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import org.usfirst.frc.team1699.utils.inireader.ConfigFile;
+import org.usfirst.frc.team1699.utils.inireader.ConfigLine;
 import org.usfirst.frc.team1699.utils.inireader.ConfigSection;
 
 public class AutoUtils {
@@ -22,7 +22,7 @@ public class AutoUtils {
 	 * @param s
 	 * @return
 	 */
-	public static int parseInt(String s){
+	public static int parseInt(String s){ //This is used to turn a string into an int
 		try{
 			return Integer.parseInt(s);
 		}catch(NumberFormatException e){
@@ -37,7 +37,7 @@ public class AutoUtils {
 	 * @param s
 	 * @return
 	 */
-	public static double parseDouble(String s){
+	public static double parseDouble(String s){ //This is used to convert a string into a double
 		try{
 			return Double.parseDouble(s);
 		}catch(NumberFormatException e){
@@ -53,7 +53,8 @@ public class AutoUtils {
 	 * @param numLines
 	 * @return
 	 */
-	public static String[] loadFileAsArray(String path, int numLines){
+	@Deprecated
+	public static String[] loadFileAsArray(String path, int numLines){ //This is no longer used but it took each line of a file and added it to an array
 		String[] fileAsString = new String[numLines];
 		try (BufferedReader br = new BufferedReader(new FileReader(path));) {
 			for(int i = 0; i < numLines; i++){
@@ -68,53 +69,54 @@ public class AutoUtils {
 	}
 	
 	/**
-	 * Reads a file and returns it as an array of integers
+	 * Reads a file and returns it as an ArrayList
 	 * 
-	 * @param file
-	 * @param mode
+	 * @param path
 	 * @return
 	 */
-	@SuppressWarnings("null")
-	@Deprecated
-	public static int[] loadFileAsArray(ConfigFile file, int mode) {
-		
-		ArrayList<ConfigSection> sections = new ArrayList<>();
-		
-		// find a ConfigSection that has the text "autonomous" and mode in the name
-		int count1 = 0;
-		ConfigSection cs = null;
-		ConfigSection selected = null;
-		String name;
-		while (true) {
-			cs = file.getSection(count1);
-			
-			if (cs == null) {
-				break;
+	public static ArrayList<String> loadFileAsArray(String path){ //Takes each line of a file and adds it to an ArrayList then returns that ArrayList
+		ArrayList<String> fileAsString = new ArrayList<String>();
+		try (BufferedReader br = new BufferedReader(new FileReader(path));) {
+			String read = br.readLine();
+			while(read != null){
+				fileAsString.add(read);
+				read = br.readLine();
 			}
-			
-			name = cs.getName().toLowerCase();
-			
-			if ((name.contains("autonomous")) && (name.contains(((Integer) mode).toString()))) {
-				selected = cs;
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return fileAsString;
+	}
+	
+	/**
+	 * Reads a file and returns it as an array of integers
+	 * 
+	 * @param section
+	 * @return
+	 */
+	public static ArrayList<String> loadFileAsArray(ConfigSection section) { //Takes a ConfigFile and return it as an array of ints
+		// Make the output list
+		ArrayList<String> out = new ArrayList<>();
+		
+		// Run through all the values in the list until null is hit
+		int i = 0;
+		ConfigLine<?> cl;
+		while ((cl = section.getLine(i)) != null) {
+			// Check that the ConfigLine is a String
+			if (cl.getClass().equals(String.class)) {
+				out.add((String) cl.getValue(String.class));
 			}
-			count1 += 1;
+			// Iterate
+			i += 1;
 		}
 		
-		count1 = (Integer) null; //safety because i'm tired
-		
-		// not found state
-		if (selected == null) {
-			return new int[0]; 
-		}
-		
-		// generate commands
-		int count2 = 0;
-		int[] output = new int[selected.size()];
-		while (count2 > selected.size()) {
-			output[count2] = AutoUtils.parseInt((String) selected.getLine(count2).getValue());
-			count2 += 1;
-		}
-		
-		return output;
+		// Return the output
+		return out;
+	}
+
+	public static boolean parseBoolean(String str) { //Needs work
+		return str.equals("true") || str.equals("True");
 	}
 }
