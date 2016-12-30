@@ -5,8 +5,6 @@
  */
 package org.usfirst.frc.team1699.utils.autonomous;
 
-import java.util.ArrayList;
-
 import org.usfirst.frc.team1699.utils.command.Command;
 import org.usfirst.frc.team1699.utils.command.CommandMap;
 
@@ -19,6 +17,7 @@ public class ValueGetterUtils {
 	 * @param cmds
 	 * @return
 	 */
+	@SuppressWarnings("unused")
 	public static boolean isCommand(String string, CommandMap map) {
 		String[] inp = string.split(" ");
 		for(int i = 0; i < inp.length; i++){

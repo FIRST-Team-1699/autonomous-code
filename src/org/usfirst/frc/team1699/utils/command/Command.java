@@ -9,9 +9,6 @@
  */
 package org.usfirst.frc.team1699.utils.command;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.usfirst.frc.team1699.utils.autonomous.AutoCommand;
 
 public abstract class Command implements AutoCommand, Commandable{

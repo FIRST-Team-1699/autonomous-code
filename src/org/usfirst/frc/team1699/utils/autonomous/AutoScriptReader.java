@@ -8,7 +8,6 @@ package org.usfirst.frc.team1699.utils.autonomous;
 
 import java.util.ArrayList;
 
-import org.usfirst.frc.team1699.utils.command.Command;
 import org.usfirst.frc.team1699.utils.command.CommandMap;
 import org.usfirst.frc.team1699.utils.inireader.ConfigSection;
 
@@ -38,7 +37,6 @@ public class AutoScriptReader {
 	 * @param cs
 	 * @param cmds
 	 */
-	@SuppressWarnings("static-access")
 	public AutoScriptReader(ConfigSection cs, CommandMap map){
 		//Sets instance vars to values input by programmer
 		this.map = map;
