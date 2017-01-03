@@ -19,3 +19,5 @@
 9. Convert to ANTLR
 
 10. Create grammer
+
+11. Update run for time to use threads
