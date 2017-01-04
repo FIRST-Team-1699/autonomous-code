@@ -56,5 +56,9 @@ public class TestController implements SpeedController{
 	public void stopMotor() {
 		set(0);
 	}
+	
+	public double getSpeed(){
+		return this.speed;
+	}
 
 }
