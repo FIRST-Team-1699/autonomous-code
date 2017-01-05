@@ -13,6 +13,7 @@ import org.usfirst.team1699.test.autonomous.commands.Turn;
 public class AutoTestMain {
 	
 	@Test
+	@Ignore
 	public void autonomousTest(){
 		String filePath = "autoTestFiles/test.nav";
 		

@@ -11,5 +11,7 @@ public class ControllerTests {
 		TestController tst1 = new TestController();
 		BetterTimer time = new BetterTimer();
 		TimeControlledMotor tstTime1 = new TimeControlledMotor(tst1, time);
+		tstTime1.start();
+		System.out.println(tstTime1.getSpeed());
 	}
 }
