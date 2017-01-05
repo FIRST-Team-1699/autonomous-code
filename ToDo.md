@@ -21,3 +21,5 @@
 10. Create grammer
 
 11. Update run for time to use threads
+
+12. Write simulated timer
