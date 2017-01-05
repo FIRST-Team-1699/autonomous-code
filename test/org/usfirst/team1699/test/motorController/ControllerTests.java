@@ -10,6 +10,6 @@ public class ControllerTests {
 	public void threadedControllerTest(){
 		TestController tst1 = new TestController();
 		BetterTimer time = new BetterTimer();
-		TimeControlledMotor tstTime1 = new TimeControlledMotor(tst1, time, .5, 10);
+		TimeControlledMotor tstTime1 = new TimeControlledMotor(tst1, time);
 	}
 }

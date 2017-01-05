@@ -13,23 +13,23 @@ public class TimeControlledMotor implements Runnable{
 	private Double speed;
 	private double time;
 	
-	public TimeControlledMotor(SpeedController controller, BetterTimer timer, Double speed, double time){
+	public TimeControlledMotor(SpeedController controller, BetterTimer timer){
 		this.controller = controller;
 		this.timer = timer;
-		this.time = time;
-		this.speed = speed;
+		this.time = 0;
+		this.speed = 0.0;
 	}
 	
 	public void setSpeed(double speed){
 		this.speed = speed;
 	}
 	
+	public double getSpeed(){
+		return this.speed;
+	}
+	
 	public BetterTimer getTimer() {
 		return timer;
-	}
-
-	public void setTimer(BetterTimer timer) {
-		this.timer = timer;
 	}
 
 	public double getTime() {
