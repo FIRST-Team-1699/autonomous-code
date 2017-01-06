@@ -23,3 +23,5 @@
 11. Update run for time to use threads
 
 12. Write simulated timer
+
+13. move the todo to a github project
