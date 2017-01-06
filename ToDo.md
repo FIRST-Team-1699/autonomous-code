@@ -16,7 +16,7 @@
 
 8. ~~Make an autoCommand interface instead of having every command be an auto command~~
 
-9. Convert to ANTLR
+9. Convert to ANTLR - maybe
 
 10. Create grammer
 
