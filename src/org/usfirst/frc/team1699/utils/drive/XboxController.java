@@ -1,9 +1,7 @@
 //When writing JavaDocs, include team 3309
-package org.usfirst.frc.team1699.robot.utils;
+package org.usfirst.frc.team1699.utils.drive;
 
-import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Joystick.AxisType;
 
 public class XboxController extends Joystick {
 	
