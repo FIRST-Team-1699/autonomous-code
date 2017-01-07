@@ -31,6 +31,10 @@ public class TimeControlledMotor implements Runnable{
 	public void setTime(double time) {
 		this.time = time;
 	}
+	
+	public SpeedController getController(){
+		return this.controller;
+	}
 
 	public void run() {
 		
@@ -38,11 +42,15 @@ public class TimeControlledMotor implements Runnable{
 		controller.set(speed);
 		
 		// Wait for the specified amount of time
-		try {
-			thread.wait((long) (time * 1000));
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		} 
+		if(running){
+			try {
+				this.wait((long) (time));
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} 
+		}
+		
+		controller.set(0);
 		
 		// Stop
 		stop();
