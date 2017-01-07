@@ -11,6 +11,7 @@ package org.usfirst.frc.team1699.utils.command;
 /**
  * A timer. It starts, stops, resets, and tells the elapsed time. Uses FPGA over OS time.
  */
+@Deprecated // this class has not been updated in almost a year, and the WPILib Timer needs evaluation
 public class BetterTimer extends edu.wpi.first.wpilibj.Timer {
 
 	private Double startTime;
@@ -22,6 +23,7 @@ public class BetterTimer extends edu.wpi.first.wpilibj.Timer {
 	 */
 	public BetterTimer() {
 		super();
+		System.err.println("BetterTimer has been depreciated, please do not use!");
 		this.timePassed = (double) 0;
 	}
 
