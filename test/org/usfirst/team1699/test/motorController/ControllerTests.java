@@ -1,7 +1,6 @@
 package org.usfirst.team1699.test.motorController;
 
 import org.junit.Test;
-import org.usfirst.frc.team1699.utils.command.BetterTimer;
 import org.usfirst.frc.team1699.utils.drive.TimeControlledMotor;
 
 public class ControllerTests {
@@ -11,12 +10,15 @@ public class ControllerTests {
 		TestController tst1 = new TestController();
 		
 		TimeControlledMotor tstTime1 = new TimeControlledMotor(tst1);
-		tstTime1.setTime(100);
+		System.out.println("-1 " + tstTime1.getCurrentSpeed());
+		tst1.set(.5);
+		System.out.println("0 " + tstTime1.getCurrentSpeed());
+		tstTime1.setTime(5000);
 		tstTime1.setSpeed(1);
 		tstTime1.start();
-		for(int i = 0; i < 10000; i++){
-			System.out.println(i + " " + tstTime1.getSpeed());
-			Thread.sleep(10);
+		for(int i = 0; i < 75; i++){
+			System.out.println(i + " " + tstTime1.getCurrentSpeed());
+			Thread.sleep(100);
 		}
 	}
 }

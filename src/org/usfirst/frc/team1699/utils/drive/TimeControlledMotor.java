@@ -20,7 +20,11 @@ public class TimeControlledMotor implements Runnable{
 		this.speed = speed;
 	}
 	
-	public double getSpeed(){
+	public double getCurrentSpeed(){
+		return this.controller.get();
+	}
+	
+	public double getSetSpeed() {
 		return this.speed;
 	}
 
@@ -38,38 +42,36 @@ public class TimeControlledMotor implements Runnable{
 
 	public void run() {
 		
+		double old = controller.get();
+		
 		// Start the controller
 		controller.set(speed);
 		
 		// Wait for the specified amount of time
 		if(running){
 			try {
-				this.wait((long) (time));
+				Thread.sleep((long) time);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			} 
 		}
 		
-		controller.set(0);
+		controller.set(old);
 		
 		// Stop
 		stop();
 	}
 	
 	public synchronized void start(){
-		if(running)return;
+		if(running) return;
 		running = true;
 		thread = new Thread(this);
 		thread.start();
 	}
 	
 	public synchronized void stop(){
-		if(!running)return;
+		if(!running) return;
 		running = false;
-		try {
-			thread.join();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		//thread.interrupt(); // line in question, interrupt might not be right
 	}
 }
