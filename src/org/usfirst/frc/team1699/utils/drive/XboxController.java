@@ -2,7 +2,6 @@
 package org.usfirst.frc.team1699.utils.drive;
 
 import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Joystick;
 
 public class XboxController extends GenericHID {
