@@ -43,6 +43,7 @@ public class XboxController extends GenericHID {
 	private Joystick joystick;
 	
 	public XboxController(int port, double deadband){
+		super(port);
 		this.port = port;
 		this.deadband = deadband;
 		joystick = new Joystick(port);
@@ -161,38 +162,8 @@ public class XboxController extends GenericHID {
 	}
 
 	@Override
-	public double getZ(Hand hand) {
-		return joystick.getZ(hand);
-	}
-
-	@Override
-	public double getTwist() {
-		return joystick.getTwist();
-	}
-
-	@Override
-	public double getThrottle() {
-		return joystick.getThrottle();
-	}
-
-	@Override
 	public double getRawAxis(int which) {
 		return joystick.getRawAxis(which);
-	}
-
-	@Override
-	public boolean getTrigger(Hand hand) {
-		return joystick.getTrigger();
-	}
-
-	@Override
-	public boolean getTop(Hand hand) {
-		return joystick.getTop(hand);
-	}
-
-	@Override
-	public boolean getBumper(Hand hand) {
-		return joystick.getBumper(hand);
 	}
 
 	@Override
@@ -203,5 +174,41 @@ public class XboxController extends GenericHID {
 	@Override
 	public int getPOV(int pov) {
 		return joystick.getPOV(pov);
+	}
+
+	@Override
+	public int getPOVCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public HIDType getType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setOutput(int outputNumber, boolean value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setOutputs(int value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setRumble(RumbleType type, double value) {
+		// TODO Auto-generated method stub
+		
 	}
 }

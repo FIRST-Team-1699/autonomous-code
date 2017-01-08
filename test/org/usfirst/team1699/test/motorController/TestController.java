@@ -24,11 +24,6 @@ public class TestController implements SpeedController{
 	}
 
 	@Override
-	public void set(double speed, byte syncGroup) {
-		
-	}
-
-	@Override
 	public void set(double speed) {
 		if(inverted){
 			this.speed = speed * -1;
