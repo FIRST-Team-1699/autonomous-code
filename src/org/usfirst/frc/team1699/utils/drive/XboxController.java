@@ -141,7 +141,7 @@ public class XboxController extends GenericHID {
 	}
 	
 	private double scaleAxis(double value){
-		if(Math.abs(value) < this.deadband && Math.abs(value) > -0.05){
+		if(Math.abs(value) < this.deadband && Math.abs(value) > -this.deadband){
 			return 0;
 		}else{
 			return value;
