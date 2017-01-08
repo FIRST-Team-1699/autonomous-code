@@ -1,9 +1,11 @@
 //When writing JavaDocs, include team 3309
 package org.usfirst.frc.team1699.utils.drive;
 
+import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Joystick;
 
-public class XboxController extends Joystick {
+public class XboxController extends GenericHID {
 	
 	//Constants
 	//Buttons
@@ -42,14 +44,12 @@ public class XboxController extends Joystick {
 	private Joystick joystick;
 	
 	public XboxController(int port){
-		super(port);
 		this.port = port;
 		this.deadband = 0;
 		joystick = new Joystick(port);
 	}
 	
 	public XboxController(Joystick joystick, int port){
-		super(port);
 		this.joystick = joystick;
 		this.deadband = 0;
 	}
@@ -146,8 +146,8 @@ public class XboxController extends Joystick {
 		return joystick.getPOV(0) < 135 || joystick.getPOV(0) > 245;
 	}
 	
-	public double scaleAxis(double value){
-		if(value < this.deadband && value > -0.05){
+	private double scaleAxis(double value){
+		if(Math.abs(value) < this.deadband && Math.abs(value) > -0.05){
 			return 0;
 		}else{
 			return value;
