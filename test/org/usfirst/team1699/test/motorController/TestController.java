@@ -5,12 +5,10 @@ import edu.wpi.first.wpilibj.SpeedController;
 public class TestController implements SpeedController{
 	private boolean inverted;
 	private double speed;
-	private boolean disabled;
 
 	public TestController(){
 		this.inverted = false;
 		this.speed = 0;
-		this.disabled = false;
 	}
 	
 	@Override
@@ -44,7 +42,7 @@ public class TestController implements SpeedController{
 
 	@Override
 	public void disable() {
-		disabled = false;
+		set(0);
 	}
 
 	@Override
