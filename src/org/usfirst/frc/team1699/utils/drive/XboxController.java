@@ -40,18 +40,13 @@ public class XboxController extends GenericHID {
 	
 	
 	private int port;
-	private int deadband;
+	private double deadband;
 	private Joystick joystick;
 	
-	public XboxController(int port){
+	public XboxController(int port, double deadband){
 		this.port = port;
-		this.deadband = 0;
+		this.deadband = deadband;
 		joystick = new Joystick(port);
-	}
-	
-	public XboxController(Joystick joystick, int port){
-		this.joystick = joystick;
-		this.deadband = 0;
 	}
 	
 	public boolean getA(){
@@ -122,7 +117,7 @@ public class XboxController extends GenericHID {
 		return joystick.getRawButton(BUTTON_RIGHT_BUMPER);
 	}
 	
-	public int getDeadband(){
+	public double getDeadband(){
 		return this.deadband;
 	}
 	
