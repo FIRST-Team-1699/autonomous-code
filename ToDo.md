@@ -16,12 +16,12 @@
 
 8. ~~Make an autoCommand interface instead of having every command be an auto command~~
 
-9. Convert to ANTLR - maybe
+9. ~~Convert to ANTLR - maybe~~
 
-10. Create grammer
+10. ~~Create grammer~~
 
-11. Update run for time to use threads
+11. ~~Update run for time to use threads~~
 
-12. Write simulated timer
+12. ~~Write simulated timer~~
 
 13. move the todo to a github project
