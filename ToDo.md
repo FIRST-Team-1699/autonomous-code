@@ -25,3 +25,5 @@
 12. ~~Write simulated timer~~
 
 13. move the todo to a github project
+
+14. Test ConfigSection auto
