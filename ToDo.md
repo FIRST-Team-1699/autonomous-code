@@ -27,3 +27,5 @@
 13. move the todo to a github project
 
 14. Test ConfigSection auto
+
+15. Clean up code
