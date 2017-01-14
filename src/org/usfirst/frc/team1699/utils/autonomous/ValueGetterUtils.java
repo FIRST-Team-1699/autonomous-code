@@ -15,12 +15,12 @@ public class ValueGetterUtils {
 	 * 
 	 * @param string
 	 * @param cmds
-	 * @return
+	 * @return boolean
 	 */
 	@SuppressWarnings("unused")
 	public static boolean isCommand(String string, CommandMap map) {
-		String[] inp = string.split(" ");
-		for(int i = 0; i < inp.length; i++){
+		String[] inp = string.split(" "); //Splits string at spaces
+		for(int i = 0; i < inp.length; i++){ //Looks for key
 			return map.hasKey(inp[i]);
 		}
 		return false;
@@ -30,16 +30,16 @@ public class ValueGetterUtils {
 	 * Determines whether to use sensor or not
 	 * 
 	 * @param cmdLine
-	 * @return
+	 * @return boolean
 	 */
 	public static boolean getUseSensor(String[] cmdLine){
 		try{
 			for(int i = 0; i < cmdLine.length; i++){ //This loops looks for the word until in the cmdLine array and returns true if it is found
-				if(cmdLine[i].equals("until")){ 
+				if(cmdLine[i].equals("until")){  //Looks for word until
 					return true;
 				}
 			}
-		}catch(ArrayIndexOutOfBoundsException e){
+		}catch(ArrayIndexOutOfBoundsException e){ //Catches ArrayIndexOutOfBoundsException
 			return false;
 		}
 		return false;
@@ -49,16 +49,16 @@ public class ValueGetterUtils {
 	 * Looks as a string and converts it to a command
 	 * 
 	 * @param cmdLine
-	 * @return
+	 * @return Command
 	 * @throws CommandNotFoundException
 	 */
 	public static Command getCmd(String[] cmdLine, CommandMap map) throws CommandNotFoundException{
 		if(map.hasKey(cmdLine[0])){ //Looks at cmdLine and determines if the first line is a valid command
-			String cmdStr = cmdLine[0];
-			Command cmd = map.getCommand(cmdStr);
+			String cmdStr = cmdLine[0]; //Splits String at space
+			Command cmd = map.getCommand(cmdStr); //Gets the Command from the map at a specific key
 			return cmd;
 		}else{
-			throw new CommandNotFoundException();
+			throw new CommandNotFoundException(); //Throws exception
 		}
 	}
 	
@@ -66,17 +66,17 @@ public class ValueGetterUtils {
 	 * Gets the distance from a string
 	 * 
 	 * @param cmdLine
-	 * @return
+	 * @return double
 	 */
 	public static double getDistance(String[] cmdLine){
 		try{
 			for(int i = 0; i < cmdLine.length; i++){ //Loops through cmdLine array and looks at the value after until or for then returns that value
-				if(((cmdLine[i].equals("until")) || cmdLine[i].equals("for")) && (i + 1 < cmdLine.length)){
-					double distance = AutoUtils.parseDouble(cmdLine[i + 1]);
+				if(((cmdLine[i].equals("until")) || cmdLine[i].equals("for")) && (i + 1 < cmdLine.length)){ //Loops the array and gets the distance
+					double distance = AutoUtils.parseDouble(cmdLine[i + 1]); //Parses String to double
 					return distance;
 				}
 			}
-		}catch(ArrayIndexOutOfBoundsException e){
+		}catch(ArrayIndexOutOfBoundsException e){ //Catches ArrayIndexOutOfBoundsException
 			return 0;
 		}
 		
@@ -87,7 +87,7 @@ public class ValueGetterUtils {
 	 * Gets the speed from a string
 	 * 
 	 * @param cmdLine
-	 * @return
+	 * @return double
 	 */
 	public static double getSpeed(String[] cmdLine){
 		for(int j = 0; j < cmdLine.length; j++){ //Loops through the cmdLine array and looks at the value after at then returns that value
