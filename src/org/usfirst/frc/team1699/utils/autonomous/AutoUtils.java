@@ -91,12 +91,13 @@ public class AutoUtils {
 	}
 	
 	/**
-	 * Reads a file and returns it as an array of integers
+	 * Gets a List of Strings from a ConfigSection
 	 * 
 	 * @param section
 	 * @return
 	 */
-	public static List<String> loadFileAsArray(ConfigSection section) { //Takes a ConfigFile and return it as an array of ints
+	public static List<String> loadFileAsArray(ConfigSection section) { 
+		// Takes a ConfigSection and return it as a List of Strings
 		return section.getStringValues();
 	}
 

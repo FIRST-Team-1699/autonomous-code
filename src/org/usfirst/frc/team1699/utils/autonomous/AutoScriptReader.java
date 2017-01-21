@@ -6,7 +6,7 @@
  */
 package org.usfirst.frc.team1699.utils.autonomous;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.usfirst.frc.team1699.utils.command.CommandMap;
 import org.usfirst.frc.team1699.utils.inireader.ConfigSection;
@@ -14,7 +14,7 @@ import org.usfirst.frc.team1699.utils.inireader.ConfigSection;
 public class AutoScriptReader {
 	
 	private String path; //Stores the path a the text file containing auto script
-	private ArrayList<String> fileAsString; //Array list that hold the autoFile as an array of strings
+	private List<String> fileAsString; //Array list that hold the autoFile as an array of strings
 	private ConfigSection cs; //Holds an instance of ConfigSection
 	private CommandMap map;
 	
@@ -57,7 +57,7 @@ public class AutoScriptReader {
 	 * 
 	 * @return
 	 */
-	public ArrayList<String> getFileAsString() { //Returns the ArrayList of the file as a string
+	public List<String> getFileAsString() { //Returns the ArrayList of the file as a string
 		return fileAsString;
 	}
 	
