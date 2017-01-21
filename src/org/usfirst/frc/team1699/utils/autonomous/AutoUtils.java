@@ -10,8 +10,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
-import org.usfirst.frc.team1699.utils.inireader.ConfigLine;
 import org.usfirst.frc.team1699.utils.inireader.ConfigSection;
 
 public class AutoUtils {
@@ -74,7 +74,7 @@ public class AutoUtils {
 	 * @param path
 	 * @return
 	 */
-	public static ArrayList<String> loadFileAsArray(String path){ //Takes each line of a file and adds it to an ArrayList then returns that ArrayList
+	public static List<String> loadFileAsArray(String path){ //Takes each line of a file and adds it to an ArrayList then returns that ArrayList
 		ArrayList<String> fileAsString = new ArrayList<String>(); //New ArrayList that store type String
 		try (BufferedReader br = new BufferedReader(new FileReader(path));) { //Creates a new buffered reader
 			String read = br.readLine();
@@ -96,24 +96,8 @@ public class AutoUtils {
 	 * @param section
 	 * @return
 	 */
-	public static ArrayList<String> loadFileAsArray(ConfigSection section) { //Takes a ConfigFile and return it as an array of ints
-		// Make the output list
-		ArrayList<String> out = new ArrayList<>();
-		
-		// Run through all the values in the list until null is hit
-		int i = 0;
-		ConfigLine<?> cl;
-		while ((cl = section.getLine(i)) != null) {
-			// Check that the ConfigLine is a String
-			if (cl.getClass().equals(String.class)) {
-				out.add((String) cl.getValue(String.class));
-			}
-			// Iterate
-			i += 1;
-		}
-		
-		// Return the output
-		return out;
+	public static List<String> loadFileAsArray(ConfigSection section) { //Takes a ConfigFile and return it as an array of ints
+		return section.getStringValues();
 	}
 
 	/**
