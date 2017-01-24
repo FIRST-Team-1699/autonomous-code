@@ -29,3 +29,7 @@
 14. Test ConfigSection auto
 
 15. Clean up code
+
+16. Change from Command to AutoCommand
+
+17. Make Command not always be AutoCommand
