@@ -9,9 +9,7 @@
  */
 package org.usfirst.frc.team1699.utils.command;
 
-import org.usfirst.frc.team1699.utils.autonomous.AutoCommand;
-
-public abstract class Command implements AutoCommand, Commandable{
+public abstract class Command implements Commandable{
 
 	private String name; //Holds command name
 	private int id; //Holds command id
@@ -36,22 +34,6 @@ public abstract class Command implements AutoCommand, Commandable{
 	 * This method should contain code run by teleop
 	 */
 	public abstract void run(); //Abstract method that should hold code that is supposed to be called during teleop
-	
-	/**
-	 * This method should contain code run by auto script
-	 * 
-	 * @param distance
-	 * @param speed
-	 * @param useSensor
-	 */
-	public abstract void runAuto(double distance, double speed, boolean useSensor); //Abstract method that should hold code that is supposed to be called during auto when the command is called
-	
-	/**
-	 * This method should contain code that returns if the auto command is done
-	 * 
-	 * @return
-	 */
-	public abstract boolean autoCommandDone(); //Abstract method that should hold code that should return true if the auto command is done
 	
 	/**
 	 * This command should contain code to output value to a dashboard

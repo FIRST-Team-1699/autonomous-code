@@ -5,8 +5,7 @@
  */
 package org.usfirst.frc.team1699.utils.autonomous;
 
-import org.usfirst.frc.team1699.utils.command.Command;
-import org.usfirst.frc.team1699.utils.command.CommandMap;
+import org.usfirst.frc.team1699.utils.command.AutoCommandMap;
 
 public class ValueGetterUtils {
 	
@@ -18,7 +17,7 @@ public class ValueGetterUtils {
 	 * @return boolean
 	 */
 	@SuppressWarnings("unused")
-	public static boolean isCommand(String string, CommandMap map) {
+	public static boolean isCommand(String string, AutoCommandMap map) {
 		String[] inp = string.split(" "); //Splits string at spaces
 		for(int i = 0; i < inp.length; i++){ //Looks for key
 			return map.hasKey(inp[i]);
@@ -52,10 +51,10 @@ public class ValueGetterUtils {
 	 * @return Command
 	 * @throws CommandNotFoundException
 	 */
-	public static Command getCmd(String[] cmdLine, CommandMap map) throws CommandNotFoundException{
+	public static AutoCommand getCmd(String[] cmdLine, AutoCommandMap map) throws CommandNotFoundException{
 		if(map.hasKey(cmdLine[0])){ //Looks at cmdLine and determines if the first line is a valid command
 			String cmdStr = cmdLine[0]; //Splits String at space
-			Command cmd = map.getCommand(cmdStr); //Gets the Command from the map at a specific key
+			AutoCommand cmd = map.getCommand(cmdStr); //Gets the Command from the map at a specific key
 			return cmd;
 		}else{
 			throw new CommandNotFoundException(); //Throws exception
@@ -106,11 +105,11 @@ public class ValueGetterUtils {
 	 * @param inp
 	 * @throws CommandNotFoundException
 	 */
-	public static void callCommandFromString(String inp, CommandMap map){
+	public static void callCommandFromString(String inp, AutoCommandMap map){
 		String[] cmdLine = inp.split(" "); //Creates a string array and sets it equal to the input string split at spaces
 		double speed = ValueGetterUtils.getSpeed(cmdLine); //Makes a double called speed and set it equal to the speed specified in the auto file
 		double distance = ValueGetterUtils.getDistance(cmdLine); //Makes a double called distance and set it equal to the distance specified in the auto file
-		Command cmd = ValueGetterUtils.getCmd(cmdLine, map); //Makes an object called command and sets it equal to the command in the auto file
+		AutoCommand cmd = ValueGetterUtils.getCmd(cmdLine, map); //Makes an object called command and sets it equal to the command in the auto file
 		boolean useSensor = ValueGetterUtils.getUseSensor(cmdLine); //Makes a boolean called use sensor and set true if the auto file specifies that a sensor should be used
 		
 		((AutoCommand) cmd).runAuto(distance, speed, useSensor); //Cast the cmd object to type Command and runs the runAuto method in it
