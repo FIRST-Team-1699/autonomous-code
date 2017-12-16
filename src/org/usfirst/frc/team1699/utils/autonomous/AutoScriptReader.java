@@ -13,12 +13,12 @@ import org.usfirst.frc.team1699.utils.inireader.ConfigSection;
 
 public class AutoScriptReader {
 
-	private String path; // Stores the path a the text file containing auto
+	private final String path; // Stores the path a the text file containing auto
 							// script
 	private List<String> fileAsString; // Array list that hold the autoFile as
 										// an array of strings
-	private ConfigSection cs; // Holds an instance of ConfigSection
-	private AutoCommandMap map;
+	private final ConfigSection cs; // Holds an instance of ConfigSection
+	private final AutoCommandMap map;
 
 	/**
 	 * Constructor
@@ -26,10 +26,11 @@ public class AutoScriptReader {
 	 * @param path
 	 * @param cmds
 	 */
-	public AutoScriptReader(String path, AutoCommandMap map) {
+	public AutoScriptReader(final String path, final AutoCommandMap map) {
 		// Sets instance vars to values input by programmer
 		this.path = path;
 		this.map = map;
+		this.cs = null;
 		fileAsString = AutoUtils.loadFileAsArray(path); // Sets fileAsArray list
 														// equal to the file
 		fileAsString.forEach(a -> System.out.println(a));
@@ -41,9 +42,11 @@ public class AutoScriptReader {
 	 * @param cs
 	 * @param cmds
 	 */
-	public AutoScriptReader(ConfigSection cs, AutoCommandMap map) {
+	public AutoScriptReader(final ConfigSection cs, final AutoCommandMap map) {
 		// Sets instance vars to values input by programmer
 		this.map = map;
+		this.cs = cs;
+		this.path = null;
 		fileAsString = AutoUtils.loadFileAsArray(cs); // Sets fileAsArray list
 														// equal to the file
 	}

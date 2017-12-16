@@ -33,7 +33,7 @@ public class CommandMap {
 	 * @param key
 	 * @return Command for a key
 	 */
-	public Command getCommand(String key){
+	public Command getCommand(final String key){
 		return cmds.get(key);
 	}
 	
@@ -43,12 +43,12 @@ public class CommandMap {
 	 * @param key
 	 * @return true is Map has key
 	 */
-	public boolean hasKey(String key){
+	public boolean hasKey(final String key){
 		return cmds.containsKey(key);
 	}
 	
 	
-	public void removeCmd(String key){
+	public void removeCmd(final String key){
 		cmds.remove(key);
 	}
 	
@@ -56,7 +56,7 @@ public class CommandMap {
 		return cmds.size();
 	}
 	
-	public void addEntry(String key, Command cmd){
+	public void addEntry(final String key, final Command cmd){
 		if(cmds.containsKey(key)){
 			throw new NameUsedException();
 		}

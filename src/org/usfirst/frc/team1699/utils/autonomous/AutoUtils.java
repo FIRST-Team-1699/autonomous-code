@@ -22,7 +22,7 @@ public class AutoUtils {
 	 * @param s
 	 * @return
 	 */
-	public static int parseInt(String s){ //This is used to turn a string into an int
+	public static int parseInt(final String s){ //This is used to turn a string into an int
 		try{
 			return Integer.parseInt(s); //Converts String to int
 		}catch(NumberFormatException e){ //Catches if String is not an int
@@ -37,7 +37,7 @@ public class AutoUtils {
 	 * @param s
 	 * @return
 	 */
-	public static double parseDouble(String s){ //This is used to convert a string into a double
+	public static double parseDouble(final String s){ //This is used to convert a string into a double
 		try{
 			return Double.parseDouble(s); //Converts String to double
 		}catch(NumberFormatException e){ //Catches if String is not a double
@@ -54,7 +54,7 @@ public class AutoUtils {
 	 * @return
 	 */
 	@Deprecated
-	public static String[] loadFileAsArray(String path, int numLines){ //This is no longer used but it took each line of a file and added it to an array
+	public static String[] loadFileAsArray(final String path, final int numLines){ //This is no longer used but it took each line of a file and added it to an array
 		String[] fileAsString = new String[numLines]; //New string array
 		try (BufferedReader br = new BufferedReader(new FileReader(path));) { //Creates a new buffered reader
 			for(int i = 0; i < numLines; i++){ //Loops through each line of the file and adds it to the array
@@ -74,7 +74,7 @@ public class AutoUtils {
 	 * @param path
 	 * @return
 	 */
-	public static List<String> loadFileAsArray(String path){ //Takes each line of a file and adds it to an ArrayList then returns that ArrayList
+	public static List<String> loadFileAsArray(final String path){ //Takes each line of a file and adds it to an ArrayList then returns that ArrayList
 		ArrayList<String> fileAsString = new ArrayList<String>(); //New ArrayList that store type String
 		try (BufferedReader br = new BufferedReader(new FileReader(path));) { //Creates a new buffered reader
 			String read = br.readLine();
@@ -96,7 +96,7 @@ public class AutoUtils {
 	 * @param section
 	 * @return
 	 */
-	public static List<String> loadFileAsArray(ConfigSection section) { 
+	public static List<String> loadFileAsArray(final ConfigSection section) { 
 		// Takes a ConfigSection and return it as a List of Strings
 		return section.getStringValues();
 	}
@@ -107,7 +107,7 @@ public class AutoUtils {
 	 * @param str
 	 * @return boolean
 	 */
-	public static boolean parseBoolean(String str) { //Needs work
+	public static boolean parseBoolean(final String str) { //Needs work
 		return str.equals("true") || str.equals("True");
 	}
 }

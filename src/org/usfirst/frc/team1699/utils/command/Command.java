@@ -20,7 +20,7 @@ public abstract class Command implements Commandable{
 	 * @param name
 	 * @param id
 	 */
-	public Command(String name, int id) { //Constructor, sets instance vars equal to input and adds command name and id to respective sets
+	public Command(final String name, final int id) { //Constructor, sets instance vars equal to input and adds command name and id to respective sets
 		this.name = name;
 		this.id = id;
 	}
@@ -77,7 +77,7 @@ public abstract class Command implements Commandable{
 	 * @param inpStr
 	 * @return
 	 */
-	public boolean equals(String inpStr){ //Used to compare commands
+	public boolean equals(final String inpStr){ //Used to compare commands
 		return this.name.toLowerCase().equals(inpStr.toLowerCase());
 	}
 }

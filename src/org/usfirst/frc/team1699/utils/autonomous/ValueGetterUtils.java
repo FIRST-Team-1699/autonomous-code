@@ -17,7 +17,7 @@ public class ValueGetterUtils {
 	 * @return boolean
 	 */
 	@SuppressWarnings("unused")
-	public static boolean isCommand(String string, AutoCommandMap map) {
+	public static boolean isCommand(final String string, final AutoCommandMap map) {
 		String[] inp = string.split(" "); //Splits string at spaces
 		for(int i = 0; i < inp.length; i++){ //Looks for key
 			return map.hasKey(inp[i]);
@@ -31,7 +31,7 @@ public class ValueGetterUtils {
 	 * @param cmdLine
 	 * @return boolean
 	 */
-	public static boolean getUseSensor(String[] cmdLine){
+	public static boolean getUseSensor(final String[] cmdLine){
 		try{
 			for(int i = 0; i < cmdLine.length; i++){ //This loops looks for the word until in the cmdLine array and returns true if it is found
 				if(cmdLine[i].equals("until")){  //Looks for word until
@@ -51,7 +51,7 @@ public class ValueGetterUtils {
 	 * @return Command
 	 * @throws CommandNotFoundException
 	 */
-	public static AutoCommand getCmd(String[] cmdLine, AutoCommandMap map) throws CommandNotFoundException{
+	public static AutoCommand getCmd(final String[] cmdLine, final AutoCommandMap map) throws CommandNotFoundException{
 		if(map.hasKey(cmdLine[0])){ //Looks at cmdLine and determines if the first line is a valid command
 			String cmdStr = cmdLine[0]; //Splits String at space
 			AutoCommand cmd = map.getCommand(cmdStr); //Gets the Command from the map at a specific key
@@ -67,7 +67,7 @@ public class ValueGetterUtils {
 	 * @param cmdLine
 	 * @return double
 	 */
-	public static double getDistance(String[] cmdLine){
+	public static double getDistance(final String[] cmdLine){
 		try{
 			for(int i = 0; i < cmdLine.length; i++){ //Loops through cmdLine array and looks at the value after until or for then returns that value
 				if(((cmdLine[i].equals("until")) || cmdLine[i].equals("for")) && (i + 1 < cmdLine.length)){ //Loops the array and gets the distance
@@ -88,7 +88,7 @@ public class ValueGetterUtils {
 	 * @param cmdLine
 	 * @return double
 	 */
-	public static double getSpeed(String[] cmdLine){
+	public static double getSpeed(final String[] cmdLine){
 		for(int j = 0; j < cmdLine.length; j++){ //Loops through the cmdLine array and looks at the value after at then returns that value
 			if((cmdLine[j].equals("at")) && (j + 1 < cmdLine.length)){
 				double speed = AutoUtils.parseDouble(cmdLine[j + 1]);
@@ -105,7 +105,7 @@ public class ValueGetterUtils {
 	 * @param inp
 	 * @throws CommandNotFoundException
 	 */
-	public static void callCommandFromString(String inp, AutoCommandMap map){
+	public static void callCommandFromString(final String inp, final AutoCommandMap map){
 		String[] cmdLine = inp.split(" "); //Creates a string array and sets it equal to the input string split at spaces
 		double speed = ValueGetterUtils.getSpeed(cmdLine); //Makes a double called speed and set it equal to the speed specified in the auto file
 		double distance = ValueGetterUtils.getDistance(cmdLine); //Makes a double called distance and set it equal to the distance specified in the auto file

@@ -36,7 +36,7 @@ public class AutoCommandMap {
 	 * @param key
 	 * @return Command for a key
 	 */
-	public AutoCommand getCommand(String key){
+	public AutoCommand getCommand(final String key){
 		return cmds.get(key);
 	}
 	
@@ -46,12 +46,12 @@ public class AutoCommandMap {
 	 * @param key
 	 * @return true is Map has key
 	 */
-	public boolean hasKey(String key){
+	public boolean hasKey(final String key){
 		return cmds.containsKey(key);
 	}
 	
 	
-	public void removeCmd(String key){
+	public void removeCmd(final String key){
 		cmds.remove(key);
 	}
 	
@@ -59,7 +59,7 @@ public class AutoCommandMap {
 		return cmds.size();
 	}
 	
-	public void addEntry(String key, AutoCommand cmd){
+	public void addEntry(final String key, final AutoCommand cmd){
 		if(cmds.containsKey(key)){
 			throw new NameUsedException();
 		}

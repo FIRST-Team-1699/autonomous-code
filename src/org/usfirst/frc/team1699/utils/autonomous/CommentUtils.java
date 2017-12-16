@@ -13,7 +13,7 @@ public class CommentUtils {
 	 * @param line
 	 * @return newLine
 	 */
-	public static String removeLineComments(String line) {
+	public static String removeLineComments(final String line) {
 		String newLine = line; //Makes a new version of the line without comments to be returned
 		if(line.substring(0, 1).equals("~") || line.substring(0, 2).equals("//")) { //Returns nothing if the entire line is a single-line comment
 			return "";
@@ -34,7 +34,7 @@ public class CommentUtils {
 	 * @return newLine
 	 */
 	@Deprecated
-	public String removeMultiLineComments(String line) {
+	public String removeMultiLineComments(final String line) {
 		boolean isComment = false; //Holds a boolean to keep track of whether or not a character is part of a multi-line comment
 		String newLine = ""; //Makes a new version of the program as a string without multi-lined comments
 		for(int ch = 0; ch < line.length() - 2; ch++) { //Loops through all of the characters in the string and indicates the start/end of a comment or adds the character to the new string
@@ -55,7 +55,7 @@ public class CommentUtils {
 	 * @param string
 	 * @return
 	 */
-	public static boolean isComment(String string) {
+	public static boolean isComment(final String string) {
 		return string.contains("//") || string.contains("~");
 	}
 }
