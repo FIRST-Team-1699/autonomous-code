@@ -11,8 +11,8 @@ package org.usfirst.frc.team1699.utils.command;
 
 public abstract class Command implements Commandable{
 
-	private String name; //Holds command name
-	private int id; //Holds command id
+	private final String name; //Holds command name
+	private final int id; //Holds command id
 
 	/**
 	 * Constructor
